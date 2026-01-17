@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog — Patate324</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Roboto, sans-serif;
+            background-color: #1a1a1a;
+            color: #e6e6e6;
+        }
+
+        a {
+            text-decoration: none;
+            color: #2dd4a7;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #5ff3c8;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: #111;
+            border-bottom: 1px solid #2dd4a7;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #2dd4a7;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Blog List Layout */
+        .container {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        h1 {
+            font-size: 2.6rem;
+            color: #ffffff;
+            margin-bottom: 30px;
+        }
+
+        .post-preview {
+            background-color: #111;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid #2dd4a7;
+            margin-bottom: 40px;
+        }
+
+        .post-title {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .post-meta {
+            font-size: 0.9rem;
+            color: #aaaaaa;
+            margin-bottom: 15px;
+        }
+
+        .post-excerpt {
+            font-size: 1.05rem;
+            color: #cccccc;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 60px;
+            border-top: 1px solid #2dd4a7;
+            color: #888;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Patate324</div>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About Me</a></li>
+            <li><a href="#">Publications</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="container">
+
+    <h1>Blog</h1>
+
+    <!-- Blog Post Preview 1 -->
+    <div class="post-preview">
+        <div class="post-title">Understanding Thermal‑Mechanical Coupling in Modern Engineering</div>
+        <div class="post-meta">Posted on January 10, 2026</div>
+        <div class="post-excerpt">
+            A quick dive into how thermal and mechanical effects interact in complex systems, 
+            and why accurate modeling is essential for industrial applications.
+        </div>
+        <a href="blog-post-1.html">Read more →</a>
+    </div>
+
+    <!-- Blog Post Preview 2 -->
+    <div class="post-preview">
+        <div class="post-title">What Engineers Can Learn from Optimization Theory</div>
+        <div class="post-meta">Posted on December 22, 2025</div>
+        <div class="post-excerpt">
+            Optimization isn’t just math — it’s a mindset. Here’s how engineers can apply 
+            optimization principles to design, workflows, and decision‑making.
+        </div>
+        <a href="blog-post-2.html">Read more →</a>
+    </div>
+
+    <!-- Blog Post Preview 3 -->
+    <div class="post-preview">
+        <div class="post-title">A Practical Guide to High‑Fidelity Simulation Tools</div>
+        <div class="post-meta">Posted on November 30, 2025</div>
+        <div class="post-excerpt">
+            From mesh refinement to solver selection, this guide breaks down the essentials 
+            of running accurate and efficient simulations.
+        </div>
+        <a href="blog-post-3.html">Read more →</a>
+    </div>
+
+</div>
+
+<footer>
+    © 2026 Patate324 — All Rights Reserved
+</footer>
+
+</body>
+</html>
