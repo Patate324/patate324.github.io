@@ -14,6 +14,9 @@
     <!-- Site Theme CSS -->
     <link rel="stylesheet" href="../assets/css/theme.css">
     
+    <!-- Mobile Menu CSS -->
+    <link rel="stylesheet" href="../assets/css/mobile-menu.css">
+    
     <style>
         /* Publications page specific styles */
         .container {
@@ -96,29 +99,8 @@
 
 <body>
 
-    <!-- Header -->
-    <header role="banner">
-        <div class="logo">Patate324</div>
-        <div class="header-right">
-            <nav aria-label="Main navigation">
-                <ul>
-                    <li><a href="index.html" title="Go to homepage" aria-current="page">Home</a></li>
-                    <li><a href="about.html" title="Learn more about me">About Me</a></li>
-                    <li><a href="publications.html" title="View my research and publications">Publications</a></li>
-                    <li><a href="blog.html" title="Read my blog posts">Blog</a></li>
-                    <li><a href="contacts.html" title="Get in touch">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="header-controls">
-                <!-- Language Toggle -->
-                <a href="../fr/publications.html" class="language-toggle" title="Passer au français">
-                    <span>Français</span>
-                </a>
-                <!-- Theme Toggle -->
-                <div id="theme-toggle-container" aria-label="Theme toggle"></div>
-            </div>
-        </div>
-    </header>
+    <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
 
     <div class="container">
         <h1>Publications</h1>
@@ -177,13 +159,14 @@
         </div>
     </div>
 
-    <footer>
-        © 2026 Patate324 – All Rights Reserved
-    </footer>
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
 
     <!-- Day/Night Toggle JavaScript -->
     <script src="../assets/day-night-toggle/toggle.js"></script>
-    <script src="../assets/js/theme-toggle-init.js"></script>
+    
+    <!-- Components Loader (loads header, footer, and initializes everything) -->
+    <script src="../assets/js/components.js"></script>
 
 </body>
 </html>
