@@ -30,16 +30,19 @@
             font-weight: bold;
             margin: 0;
             opacity: 0.2;
+            color: var(--text-color);
         }
         
         .error-message {
             font-size: 1.5rem;
             margin: 1rem 0;
+            color: var(--text-color);
         }
         
         .error-description {
             margin: 1.5rem 0;
             line-height: 1.6;
+            color: var(--text-color);
         }
         
         .error-links {
@@ -53,7 +56,7 @@
         .error-links a {
             padding: 0.75rem 1.5rem;
             background: var(--accent-color, #007acc);
-            color: white;
+            color: var(--button-text-color, white);
             text-decoration: none;
             border-radius: 4px;
             transition: opacity 0.2s;
@@ -67,7 +70,18 @@
             margin-top: 2rem;
             padding: 1rem;
             background: var(--bg-secondary, #f5f5f5);
+            border: 1px solid var(--border-color, #ddd);
             border-radius: 4px;
+            color: var(--text-color);
+        }
+        
+        .suggestion a {
+            color: var(--link-color, #007acc);
+            text-decoration: underline;
+        }
+        
+        .suggestion a:hover {
+            opacity: 0.8;
         }
     </style>
 </head>
@@ -186,27 +200,36 @@
     <script>
         // Wait for components to load, then override language toggle behavior
         document.addEventListener('DOMContentLoaded', function() {
+            // Add a longer delay for GitHub Pages
             setTimeout(function() {
                 // Override desktop language toggle
                 const langToggle = document.getElementById('language-toggle');
                 if (langToggle) {
+                    console.log('Found desktop language toggle');
                     langToggle.href = '#';
                     langToggle.addEventListener('click', function(e) {
                         e.preventDefault();
+                        console.log('Desktop toggle clicked');
                         window.__404_TOGGLE_LANGUAGE__();
                     });
+                } else {
+                    console.warn('Desktop language toggle not found');
                 }
                 
                 // Override mobile language toggle
                 const mobileLangToggle = document.getElementById('mobile-language-toggle');
                 if (mobileLangToggle) {
+                    console.log('Found mobile language toggle');
                     mobileLangToggle.href = '#';
                     mobileLangToggle.addEventListener('click', function(e) {
                         e.preventDefault();
+                        console.log('Mobile toggle clicked');
                         window.__404_TOGGLE_LANGUAGE__();
                     });
+                } else {
+                    console.warn('Mobile language toggle not found');
                 }
-            }, 100); // Small delay to ensure components are loaded
+            }, 500); // Increased delay for GitHub Pages
         });
     </script>
 </body>

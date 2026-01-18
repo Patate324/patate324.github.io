@@ -301,6 +301,12 @@
     // Determine the correct base path based on current location
     function getBasePath() {
         const path = window.location.pathname;
+        
+        // Special case: if we're on 404 page, always use absolute path
+        if (path === '/404.html' || path === '/404/' || path.includes('404')) {
+            return '/assets/components/';
+        }
+        
         // If we're in /en/ or /fr/ folder, go up one level
         if (path.includes('/en/') || path.includes('/fr/')) {
             return '/assets/components/';
