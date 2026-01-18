@@ -1,2 +1,2 @@
 # patate324.github.io
-Patate324 Website
+Website made almost entirely with Claude.ai and copilot.com
