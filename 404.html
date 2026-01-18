@@ -96,16 +96,43 @@
         
         // Detect language from URL or localStorage
         function detectLanguage() {
-            // Check localStorage FIRST (this overrides URL detection on 404 pages)
+            const path = window.location.pathname;
             const stored = localStorage.getItem('404-language');
             console.log('Stored language:', stored);
-            if (stored) return stored;
+            console.log('Path:', path);
             
-            // Then check URL
-            const path = window.location.pathname;
-            if (path.includes('/fr/')) return 'fr';
-            if (path.includes('/en/')) return 'en';
+            // If localStorage exists AND matches the URL language prefix, use it
+            // OR if localStorage exists and URL has no language prefix, use it
+            const urlHasFr = path.includes('/fr/');
+            const urlHasEn = path.includes('/en/');
             
+            if (stored) {
+                // If stored language matches URL, use it (user toggled before)
+                if ((stored === 'fr' && urlHasFr) || (stored === 'en' && urlHasEn)) {
+                    console.log('Using stored language that matches URL');
+                    return stored;
+                }
+                // If stored language differs from URL, user toggled - respect their choice
+                if ((stored === 'fr' && !urlHasEn) || (stored === 'en' && !urlHasFr)) {
+                    console.log('Using stored language (user toggled)');
+                    return stored;
+                }
+                // If URL contradicts stored, clear localStorage and use URL (fresh 404 from different language section)
+                console.log('URL contradicts stored language, using URL and clearing storage');
+                localStorage.removeItem('404-language');
+            }
+            
+            // No valid localStorage, detect from URL
+            if (urlHasFr) {
+                console.log('Detected fr from URL');
+                return 'fr';
+            }
+            if (urlHasEn) {
+                console.log('Detected en from URL');
+                return 'en';
+            }
+            
+            console.log('Defaulting to en');
             return 'en';
         }
         
