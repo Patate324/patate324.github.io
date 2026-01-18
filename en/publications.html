@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications – Patate324</title>
+    
+    <!-- CRITICAL: Set theme BEFORE any visible content loads -->
+    <script src="assets/js/theme-init.js"></script>
+    
+    <!-- Day/Night Toggle CSS -->
+    <link rel="stylesheet" href="assets/day-night-toggle/toggle.css">
+    
+    <!-- Site Theme CSS -->
+    <link rel="stylesheet" href="assets/css/theme.css">
+    
+    <style>
+        /* Publications page specific styles */
+        .container {
+            max-width: 1000px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        h1 {
+            font-size: 2.6rem;
+            color: var(--text-primary);
+            margin-bottom: 40px;
+        }
+
+        .pub-list {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .pub-item {
+            background: linear-gradient(180deg, 
+                color-mix(in oklab, var(--bg-header) 90%, transparent), 
+                var(--bg-header));
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid var(--accent-primary);
+            border: 1px solid rgba(106, 165, 255, 0.2);
+            box-shadow: var(--shadow);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            color: inherit;
+        }
+
+        .pub-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+        
+        /* Enhanced glow for dark mode */
+        [data-dark-mode="true"] .pub-item:hover {
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4),
+                        0 0 0 1px rgba(106, 165, 255, 0.4),
+                        0 0 20px rgba(106, 165, 255, 0.2);
+        }
+        
+        .pub-item .pub-link {
+            display: none;
+        }
+
+        .pub-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .pub-authors {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .pub-meta {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .pub-abstract {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header role="banner">
+        <div class="logo">Patate324</div>
+        <div class="header-right">
+            <nav aria-label="Main navigation">
+                <ul>
+                    <li><a href="index.html" title="Go to homepage">Home</a></li>
+                    <li><a href="about.html" title="Learn more about me">About Me</a></li>
+                    <li><a href="publications.html" title="View my research and publications" aria-current="page">Publications</a></li>
+                    <li><a href="blog.html" title="Read my blog posts">Blog</a></li>
+                    <li><a href="contacts.html" title="Get in touch">Contact</a></li>
+                </ul>
+            </nav>
+            <!-- Theme Toggle -->
+            <div id="theme-toggle-container" aria-label="Theme toggle"></div>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Publications</h1>
+
+        <div class="pub-list">
+            <!-- Example Publication (User-provided DOI) -->
+            <a href="https://doi.org/10.1007/s11663-025-03758-7" target="_blank" class="pub-item">
+                <div class="pub-title">
+                    Example Publication Title (Replace with Actual Title)
+                </div>
+                <div class="pub-authors">
+                    A. Lastname, B. Collaborator, C. Researcher
+                </div>
+                <div class="pub-meta">
+                    Metallurgical and Materials Transactions B, 2025  
+                </div>
+                <div class="pub-abstract">
+                    This is a placeholder abstract summarizing the research topic, methodology, and key findings. 
+                    Replace this text with a short description of the publication.
+                </div>
+            </a>
+
+            <!-- Placeholder Publication 2 -->
+            <a href="#" target="_blank" class="pub-item">
+                <div class="pub-title">
+                    Advanced Modeling of Thermal-Mechanical Systems
+                </div>
+                <div class="pub-authors">
+                    A. Lastname, D. Engineer
+                </div>
+                <div class="pub-meta">
+                    Journal of Computational Engineering, 2024
+                </div>
+                <div class="pub-abstract">
+                    A study exploring high‑fidelity simulation techniques for complex thermal‑mechanical interactions 
+                    in industrial systems. Includes validation against experimental data.
+                </div>
+            </a>
+
+            <!-- Placeholder Publication 3 -->
+            <a href="#" target="_blank" class="pub-item">
+                <div class="pub-title">
+                    Optimization Strategies for Large‑Scale Industrial Processes
+                </div>
+                <div class="pub-authors">
+                    A. Lastname, E. Analyst, F. Scientist
+                </div>
+                <div class="pub-meta">
+                    International Journal of Process Engineering, 2023
+                </div>
+                <div class="pub-abstract">
+                    This work presents optimization frameworks for improving efficiency, reducing waste, and 
+                    enhancing reliability in large‑scale industrial operations.
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        © 2026 Patate324 – All Rights Reserved
+    </footer>
+
+    <!-- Day/Night Toggle JavaScript -->
+    <script src="assets/day-night-toggle/toggle.js"></script>
+    <script src="assets/js/theme-toggle-init.js"></script>
+
+</body>
+</html>
