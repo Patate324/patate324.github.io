@@ -65,24 +65,6 @@
         .error-links a:hover {
             opacity: 0.8;
         }
-        
-        .suggestion {
-            margin-top: 2rem;
-            padding: 1rem;
-            background: var(--bg-secondary, #f5f5f5);
-            border: 1px solid var(--border-color, #ddd);
-            border-radius: 4px;
-            color: var(--text-color);
-        }
-        
-        .suggestion a {
-            color: var(--link-color, #007acc);
-            text-decoration: underline;
-        }
-        
-        .suggestion a:hover {
-            opacity: 0.8;
-        }
     </style>
 </head>
 
@@ -97,10 +79,6 @@
         <p class="error-description" id="error-description">
             The page you're looking for doesn't exist or may have been moved.
         </p>
-        
-        <div class="suggestion" id="language-suggestion" style="display: none;">
-            <p id="suggestion-text"></p>
-        </div>
         
         <div class="error-links">
             <a href="/en/home/" id="home-link">Go to Homepage</a>
@@ -145,17 +123,13 @@
                 title: 'Page Not Found',
                 description: "The page you're looking for doesn't exist or may have been moved.",
                 homeLink: 'Go to Homepage',
-                backLink: 'Go Back',
-                suggestion: 'This page might be available in French. Would you like to try the French version?',
-                tryFrench: 'Try French Version'
+                backLink: 'Go Back'
             },
             fr: {
                 title: 'Page Non Trouvée',
                 description: "La page que vous recherchez n'existe pas ou a peut-être été déplacée.",
                 homeLink: "Aller à l'accueil",
-                backLink: 'Retour',
-                suggestion: 'Cette page pourrait être disponible en anglais. Voulez-vous essayer la version anglaise ?',
-                tryEnglish: 'Essayer la version anglaise'
+                backLink: 'Retour'
             }
         };
         
@@ -168,26 +142,6 @@
         document.getElementById('home-link').textContent = t.homeLink;
         document.getElementById('home-link').href = lang === 'fr' ? '/fr/acceuil/' : '/en/home/';
         document.getElementById('back-link').textContent = t.backLink;
-        
-        // Suggest alternate language if page might exist there
-        function suggestAlternateLanguage() {
-            const suggestion = document.getElementById('language-suggestion');
-            const suggestionText = document.getElementById('suggestion-text');
-            
-            if (lang === 'en' && requestedPath.includes('/en/')) {
-                // Suggest French version
-                const frenchPath = requestedPath.replace('/en/', '/fr/');
-                suggestionText.innerHTML = `${t.suggestion} <a href="${frenchPath}">${t.tryFrench}</a>`;
-                suggestion.style.display = 'block';
-            } else if (lang === 'fr' && requestedPath.includes('/fr/')) {
-                // Suggest English version
-                const englishPath = requestedPath.replace('/fr/', '/en/');
-                suggestionText.innerHTML = `${t.suggestion} <a href="${englishPath}">${t.tryEnglish}</a>`;
-                suggestion.style.display = 'block';
-            }
-        }
-        
-        suggestAlternateLanguage();
     </script>
 
     <!-- Day/Night Toggle JavaScript -->
