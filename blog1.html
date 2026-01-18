@@ -3,54 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Post Title — Patate324</title>
+    <title>Blog Post Title – Patate324</title>
+    
+    <!-- CRITICAL: Set theme BEFORE any visible content loads -->
+    <script src="assets/js/theme-init.js"></script>
+    
+    <!-- Day/Night Toggle CSS -->
+    <link rel="stylesheet" href="assets/day-night-toggle/toggle.css">
+    
+    <!-- Site Theme CSS -->
+    <link rel="stylesheet" href="assets/css/theme.css">
+    
     <style>
-        body {
-            margin: 0;
-            font-family: "Segoe UI", Roboto, sans-serif;
-            background-color: #1a1a1a;
-            color: #e6e6e6;
-        }
-
-        a {
-            text-decoration: none;
-            color: #2dd4a7;
-            transition: color 0.3s ease;
-        }
-
-        a:hover {
-            color: #5ff3c8;
-        }
-
-        /* Header */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 40px;
-            background-color: #111;
-            border-bottom: 1px solid #2dd4a7;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .logo {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: #2dd4a7;
-            letter-spacing: 1px;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 30px;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* Blog Layout */
+        /* Blog post specific styles */
         .container {
             max-width: 900px;
             margin: 60px auto;
@@ -59,26 +24,27 @@
 
         .post-title {
             font-size: 2.4rem;
-            color: #ffffff;
+            color: var(--text-primary);
             margin-bottom: 10px;
         }
 
         .post-meta {
             font-size: 0.95rem;
-            color: #aaaaaa;
+            color: var(--text-muted);
             margin-bottom: 40px;
         }
 
         .post-content {
             line-height: 1.7;
             font-size: 1.1rem;
-            color: #d0d0d0;
+            color: var(--text-secondary);
         }
 
         .post-content h2 {
-            color: #2dd4a7;
+            color: var(--accent-primary);
             margin-top: 40px;
             margin-bottom: 10px;
+            font-size: 1.8rem;
         }
 
         .post-content p {
@@ -90,78 +56,75 @@
             max-width: 850px;
             border-radius: 10px;
             margin: 30px 0;
-            border: 2px solid #2dd4a7;
-        }
-
-        footer {
-            text-align: center;
-            padding: 30px;
-            margin-top: 60px;
-            border-top: 1px solid #2dd4a7;
-            color: #888;
+            border: 1px solid rgba(106, 165, 255, 0.3);
+            box-shadow: var(--shadow);
         }
     </style>
 </head>
 
 <body>
 
-<header>
-    <div class="logo">Patate324</div>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Me</a></li>
-            <li><a href="publications.html">Publications</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="contacts.html">Contact</a></li>
-        </ul>
-    </nav>
-</header>
+    <!-- Header -->
+    <header role="banner">
+        <div class="logo">Patate324</div>
+        <div class="header-right">
+            <nav aria-label="Main navigation">
+                <ul>
+                    <li><a href="index.html" title="Go to homepage">Home</a></li>
+                    <li><a href="about.html" title="Learn more about me">About Me</a></li>
+                    <li><a href="publications.html" title="View my research and publications">Publications</a></li>
+                    <li><a href="blog.html" title="Read my blog posts">Blog</a></li>
+                    <li><a href="contacts.html" title="Get in touch">Contact</a></li>
+                </ul>
+            </nav>
+            <!-- Theme Toggle -->
+            <div id="theme-toggle-container" aria-label="Theme toggle"></div>
+        </div>
+    </header>
 
-<div class="container">
+    <div class="container">
+        <!-- Blog Post Title -->
+        <div class="post-title">Blog Post Title Goes Here</div>
 
-    <!-- Blog Post Title -->
-    <div class="post-title">Blog Post Title Goes Here</div>
+        <!-- Metadata -->
+        <div class="post-meta">
+            Posted on January 1, 2026 • By Patate324
+        </div>
 
-    <!-- Metadata -->
-    <div class="post-meta">
-        Posted on January 1, 2026 • By Patate324
+        <!-- Blog Content -->
+        <div class="post-content">
+            <p>
+                This is where your blog post begins. You can write long‑form content, add images, 
+                include code snippets, or break the article into sections.
+            </p>
+
+            <h2>Section Heading</h2>
+            <p>
+                Expand on your ideas here. This template is designed for readability, with generous 
+                spacing and a clean typographic rhythm.
+            </p>
+
+            <img src="your-image-here.jpg" alt="Blog Image Placeholder">
+
+            <h2>Another Section</h2>
+            <p>
+                Add as many sections as you need. The layout adapts well to technical writing, 
+                engineering explanations, tutorials, or personal reflections.
+            </p>
+
+            <p>
+                Wrap up your post with a conclusion, call to action, or links to related content.
+            </p>
+        </div>
     </div>
 
-    <!-- Blog Content -->
-    <div class="post-content">
+    <footer>
+        © 2026 Patate324 – All Rights Reserved
+    </footer>
 
-        <p>
-            This is where your blog post begins. You can write long‑form content, add images, 
-            include code snippets, or break the article into sections.
-        </p>
-
-        <h2>Section Heading</h2>
-        <p>
-            Expand on your ideas here. This template is designed for readability, with generous 
-            spacing and a clean typographic rhythm.
-        </p>
-
-        <img src="your-image-here.jpg" alt="Blog Image Placeholder">
-
-        <h2>Another Section</h2>
-        <p>
-            Add as many sections as you need. The layout adapts well to technical writing, 
-            engineering explanations, tutorials, or personal reflections.
-        </p>
-
-        <p>
-            Wrap up your post with a conclusion, call to action, or links to related content.
-        </p>
-
-    </div>
-
-</div>
-
-<footer>
-    © 2026 Patate324 — All Rights Reserved
-</footer>
+    <!-- Day/Night Toggle JavaScript -->
+    <script src="assets/day-night-toggle/toggle.js"></script>
+    <script src="assets/js/theme-toggle-init.js"></script>
 
 </body>
-
 </html>

@@ -3,54 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog — Patate324</title>
+    <title>Blog – Patate324</title>
+    
+    <!-- CRITICAL: Set theme BEFORE any visible content loads -->
+    <script src="assets/js/theme-init.js"></script>
+    
+    <!-- Day/Night Toggle CSS -->
+    <link rel="stylesheet" href="assets/day-night-toggle/toggle.css">
+    
+    <!-- Site Theme CSS -->
+    <link rel="stylesheet" href="assets/css/theme.css">
+    
     <style>
-        body {
-            margin: 0;
-            font-family: "Segoe UI", Roboto, sans-serif;
-            background-color: #1a1a1a;
-            color: #e6e6e6;
-        }
-
-        a {
-            text-decoration: none;
-            color: #2dd4a7;
-            transition: color 0.3s ease;
-        }
-
-        a:hover {
-            color: #5ff3c8;
-        }
-
-        /* Header */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 40px;
-            background-color: #111;
-            border-bottom: 1px solid #2dd4a7;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .logo {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: #2dd4a7;
-            letter-spacing: 1px;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 30px;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* Blog List Layout */
+        /* Blog-specific styles */
         .container {
             max-width: 900px;
             margin: 60px auto;
@@ -59,106 +24,114 @@
 
         h1 {
             font-size: 2.6rem;
-            color: #ffffff;
+            color: var(--text-primary);
             margin-bottom: 30px;
         }
 
         .post-preview {
-            background-color: #111;
+            background: linear-gradient(180deg, 
+                color-mix(in oklab, var(--bg-header) 90%, transparent), 
+                var(--bg-header));
             padding: 25px;
             border-radius: 10px;
-            border-left: 4px solid #2dd4a7;
+            border-left: 4px solid var(--accent-primary);
             margin-bottom: 40px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(106, 165, 255, 0.2);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .post-preview:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
         }
 
         .post-title {
             font-size: 1.6rem;
             font-weight: 600;
-            color: #ffffff;
+            color: var(--text-primary);
             margin-bottom: 8px;
         }
 
         .post-meta {
             font-size: 0.9rem;
-            color: #aaaaaa;
+            color: var(--text-muted);
             margin-bottom: 15px;
         }
 
         .post-excerpt {
             font-size: 1.05rem;
-            color: #cccccc;
+            color: var(--text-secondary);
             line-height: 1.6;
             margin-bottom: 15px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 30px;
-            margin-top: 60px;
-            border-top: 1px solid #2dd4a7;
-            color: #888;
         }
     </style>
 </head>
 
 <body>
 
-<header>
-    <div class="logo">Patate324</div>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Me</a></li>
-            <li><a href="publications.html">Publications</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="contacts.html">Contact</a></li>
-        </ul>
-    </nav>
-</header>
-
-<div class="container">
-
-    <h1>Blog</h1>
-
-    <!-- Blog Post Preview 1 -->
-    <div class="post-preview">
-        <div class="post-title">Understanding Thermal‑Mechanical Coupling in Modern Engineering</div>
-        <div class="post-meta">Posted on January 10, 2026</div>
-        <div class="post-excerpt">
-            A quick dive into how thermal and mechanical effects interact in complex systems, 
-            and why accurate modeling is essential for industrial applications.
+    <!-- Header -->
+    <header role="banner">
+        <div class="logo">Patate324</div>
+        <div class="header-right">
+            <nav aria-label="Main navigation">
+                <ul>
+                    <li><a href="index.html" title="Go to homepage">Home</a></li>
+                    <li><a href="about.html" title="Learn more about me">About Me</a></li>
+                    <li><a href="publications.html" title="View my research and publications">Publications</a></li>
+                    <li><a href="blog.html" title="Read my blog posts" aria-current="page">Blog</a></li>
+                    <li><a href="contacts.html" title="Get in touch">Contact</a></li>
+                </ul>
+            </nav>
+            <!-- Theme Toggle -->
+            <div id="theme-toggle-container" aria-label="Theme toggle"></div>
         </div>
-        <a href="blog-post-1.html">Read more →</a>
+    </header>
+
+    <div class="container">
+        <h1>Blog</h1>
+
+        <!-- Blog Post Preview 1 -->
+        <div class="post-preview">
+            <div class="post-title">Understanding Thermal‑Mechanical Coupling in Modern Engineering</div>
+            <div class="post-meta">Posted on January 10, 2026</div>
+            <div class="post-excerpt">
+                A quick dive into how thermal and mechanical effects interact in complex systems, 
+                and why accurate modeling is essential for industrial applications.
+            </div>
+            <a href="blog-post-1.html">Read more →</a>
+        </div>
+
+        <!-- Blog Post Preview 2 -->
+        <div class="post-preview">
+            <div class="post-title">What Engineers Can Learn from Optimization Theory</div>
+            <div class="post-meta">Posted on December 22, 2025</div>
+            <div class="post-excerpt">
+                Optimization isn't just math – it's a mindset. Here's how engineers can apply 
+                optimization principles to design, workflows, and decision‑making.
+            </div>
+            <a href="blog-post-2.html">Read more →</a>
+        </div>
+
+        <!-- Blog Post Preview 3 -->
+        <div class="post-preview">
+            <div class="post-title">A Practical Guide to High‑Fidelity Simulation Tools</div>
+            <div class="post-meta">Posted on November 30, 2025</div>
+            <div class="post-excerpt">
+                From mesh refinement to solver selection, this guide breaks down the essentials 
+                of running accurate and efficient simulations.
+            </div>
+            <a href="blog-post-3.html">Read more →</a>
+        </div>
     </div>
 
-    <!-- Blog Post Preview 2 -->
-    <div class="post-preview">
-        <div class="post-title">What Engineers Can Learn from Optimization Theory</div>
-        <div class="post-meta">Posted on December 22, 2025</div>
-        <div class="post-excerpt">
-            Optimization isn’t just math — it’s a mindset. Here’s how engineers can apply 
-            optimization principles to design, workflows, and decision‑making.
-        </div>
-        <a href="blog-post-2.html">Read more →</a>
-    </div>
+    <footer>
+        © 2026 Patate324 – All Rights Reserved
+    </footer>
 
-    <!-- Blog Post Preview 3 -->
-    <div class="post-preview">
-        <div class="post-title">A Practical Guide to High‑Fidelity Simulation Tools</div>
-        <div class="post-meta">Posted on November 30, 2025</div>
-        <div class="post-excerpt">
-            From mesh refinement to solver selection, this guide breaks down the essentials 
-            of running accurate and efficient simulations.
-        </div>
-        <a href="blog-post-3.html">Read more →</a>
-    </div>
-
-</div>
-
-<footer>
-    © 2026 Patate324 — All Rights Reserved
-</footer>
+    <!-- Day/Night Toggle JavaScript -->
+    <script src="assets/day-night-toggle/toggle.js"></script>
+    <script src="assets/js/theme-toggle-init.js"></script>
 
 </body>
 </html>
-
