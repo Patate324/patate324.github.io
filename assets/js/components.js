@@ -217,19 +217,23 @@
         const darkModeLabel = currentLang === 'fr' ? 'Basculer le mode sombre' : 'Toggle Dark Mode';
         
         // Desktop theme toggle
-        new DayNightToggle('#theme-toggle-container', {
-            syncBody: false,
-            initialState: window.__INITIAL_THEME__,
-            buttonTitle: darkModeLabel,
-            onToggle: (mode) => {
-                localStorage.setItem('theme', mode);
-                const isDark = mode === 'dark';
-                document.documentElement.setAttribute('data-dark-mode', isDark);
-            }
-        });
+        const desktopContainer = document.querySelector('#theme-toggle-container');
+        if (desktopContainer) {
+            new DayNightToggle('#theme-toggle-container', {
+                syncBody: false,
+                initialState: window.__INITIAL_THEME__,
+                buttonTitle: darkModeLabel,
+                onToggle: (mode) => {
+                    localStorage.setItem('theme', mode);
+                    const isDark = mode === 'dark';
+                    document.documentElement.setAttribute('data-dark-mode', isDark);
+                }
+            });
+        }
 
-        // Mobile theme toggle (only initialize if on mobile)
-        if (window.innerWidth <= 768) {
+        // Mobile theme toggle - always initialize if container exists
+        const mobileContainer = document.querySelector('#theme-toggle-container-mobile');
+        if (mobileContainer) {
             new DayNightToggle('#theme-toggle-container-mobile', {
                 syncBody: false,
                 initialState: window.__INITIAL_THEME__,
