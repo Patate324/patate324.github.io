@@ -136,10 +136,15 @@
 
     // Theme toggle initialization
     function initializeThemeToggles() {
+        // Determine aria-label based on language
+        const themeToggleLabel = currentLang === 'fr' ? 'Basculer le thème' : 'Toggle theme';
+        const darkModeLabel = currentLang === 'fr' ? 'Basculer le mode sombre' : 'Toggle Dark Mode';
+        
         // Desktop theme toggle
         new DayNightToggle('#theme-toggle-container', {
             syncBody: false,
             initialState: window.__INITIAL_THEME__,
+            buttonTitle: darkModeLabel,
             onToggle: (mode) => {
                 localStorage.setItem('theme', mode);
                 const isDark = mode === 'dark';
@@ -152,6 +157,7 @@
             new DayNightToggle('#theme-toggle-container-mobile', {
                 syncBody: false,
                 initialState: window.__INITIAL_THEME__,
+                buttonTitle: darkModeLabel,
                 onToggle: (mode) => {
                     localStorage.setItem('theme', mode);
                     const isDark = mode === 'dark';
