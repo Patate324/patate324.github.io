@@ -181,20 +181,22 @@
                 const langToggle = document.getElementById('language-toggle');
                 if (langToggle) {
                     console.log('Found desktop language toggle:', langToggle);
-                    console.log('Current href:', langToggle.href);
-                    langToggle.href = '#';
+                    console.log('Current href before override:', langToggle.href);
                     
                     // Remove any existing click listeners by cloning
                     const newToggle = langToggle.cloneNode(true);
                     langToggle.parentNode.replaceChild(newToggle, langToggle);
                     
+                    // Now set href to # and add our listener
+                    newToggle.href = '#';
                     newToggle.addEventListener('click', function(e) {
                         e.preventDefault();
                         e.stopPropagation();
                         console.log('Desktop toggle clicked!');
                         window.__404_TOGGLE_LANGUAGE__();
-                    });
-                    console.log('Desktop toggle event listener added');
+                        return false;
+                    }, true); // Use capture phase
+                    console.log('Desktop toggle event listener added, new href:', newToggle.href);
                 } else {
                     console.warn('Desktop language toggle not found');
                 }
@@ -203,20 +205,22 @@
                 const mobileLangToggle = document.getElementById('mobile-language-toggle');
                 if (mobileLangToggle) {
                     console.log('Found mobile language toggle:', mobileLangToggle);
-                    console.log('Current href:', mobileLangToggle.href);
-                    mobileLangToggle.href = '#';
+                    console.log('Current href before override:', mobileLangToggle.href);
                     
                     // Remove any existing click listeners by cloning
                     const newMobileToggle = mobileLangToggle.cloneNode(true);
                     mobileLangToggle.parentNode.replaceChild(newMobileToggle, mobileLangToggle);
                     
+                    // Now set href to # and add our listener
+                    newMobileToggle.href = '#';
                     newMobileToggle.addEventListener('click', function(e) {
                         e.preventDefault();
                         e.stopPropagation();
                         console.log('Mobile toggle clicked!');
                         window.__404_TOGGLE_LANGUAGE__();
-                    });
-                    console.log('Mobile toggle event listener added');
+                        return false;
+                    }, true); // Use capture phase
+                    console.log('Mobile toggle event listener added, new href:', newMobileToggle.href);
                 } else {
                     console.warn('Mobile language toggle not found');
                 }
