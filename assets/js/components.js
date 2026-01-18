@@ -1,6 +1,6 @@
 // Component loader - loads header and footer
 (function() {
-    // Page mapping (English → French) - SINGLE SOURCE OF TRUTH
+    // Page mapping (English → French)
     const pageMap = {
         '/en/home/': '/fr/acceuil/',
         '/en/about/': '/fr/a-propos/',
@@ -14,6 +14,10 @@
         acc[fr] = en;
         return acc;
     }, {});
+
+    // Expose maps globally for 404 page to use
+    window.__PAGE_MAP__ = pageMap;
+    window.__REVERSE_PAGE_MAP__ = reversePageMap;
 
     // Navigation order and metadata (keys match pageMap)
     const navConfig = [
