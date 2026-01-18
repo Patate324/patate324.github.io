@@ -1,6 +1,6 @@
 // Component loader - loads header and footer
 (function() {
-    // Page mapping (English → French)
+    // Page mapping (English → French) - SINGLE SOURCE OF TRUTH
     const pageMap = {
         '/en/home/': '/fr/acceuil/',
         '/en/about/': '/fr/a-propos/',
@@ -301,6 +301,9 @@
 
     const basePath = getBasePath();
 
+    // Hide body until components are loaded to prevent flash
+    document.documentElement.style.visibility = 'hidden';
+
     // Load components when DOM is ready
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', async () => {
@@ -309,6 +312,8 @@
                 loadComponent('footer-placeholder', basePath + 'footer.html')
             ]);
             initializeComponents();
+            // Show body after everything is loaded
+            document.documentElement.style.visibility = 'visible';
         });
     } else {
         (async () => {
@@ -317,6 +322,8 @@
                 loadComponent('footer-placeholder', basePath + 'footer.html')
             ]);
             initializeComponents();
+            // Show body after everything is loaded
+            document.documentElement.style.visibility = 'visible';
         })();
     }
 })();
