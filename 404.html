@@ -97,6 +97,26 @@
     
     <!-- Language-aware 404 Script -->
     <script>
+        // Clean up old 404 preferences for OTHER paths when loading this 404 page
+        // This ensures old preferences don't persist across different 404 visits
+        function cleanupOther404Preferences() {
+            const currentPath = window.location.pathname;
+            const currentKey = '404-language-' + currentPath;
+            
+            const keysToRemove = [];
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                // Remove 404 preferences for OTHER paths, keep current path preference
+                if (key && key.startsWith('404-language-') && key !== currentKey) {
+                    keysToRemove.push(key);
+                }
+            }
+            keysToRemove.forEach(key => localStorage.removeItem(key));
+        }
+        
+        // Clean up on load
+        cleanupOther404Preferences();
+        
         // Access pageMap from components.js (loaded above)
         const pageMap = window.__PAGE_MAP__;
         const reversePageMap = window.__REVERSE_PAGE_MAP__;
