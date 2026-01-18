@@ -44,11 +44,19 @@
             border: 1px solid rgba(106, 165, 255, 0.2);
             box-shadow: var(--shadow);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            color: inherit;
         }
 
         .pub-item:hover {
             transform: translateY(-2px);
             box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+        
+        .pub-item .pub-link {
+            display: none;
         }
 
         .pub-title {
@@ -104,7 +112,7 @@
 
         <div class="pub-list">
             <!-- Example Publication (User-provided DOI) -->
-            <div class="pub-item">
+            <a href="https://doi.org/10.1007/s11663-025-03758-7" target="_blank" class="pub-item">
                 <div class="pub-title">
                     Example Publication Title (Replace with Actual Title)
                 </div>
@@ -118,13 +126,10 @@
                     This is a placeholder abstract summarizing the research topic, methodology, and key findings. 
                     Replace this text with a short description of the publication.
                 </div>
-                <a href="https://doi.org/10.1007/s11663-025-03758-7" target="_blank">
-                    View Publication →
-                </a>
-            </div>
+            </a>
 
             <!-- Placeholder Publication 2 -->
-            <div class="pub-item">
+            <a href="#" target="_blank" class="pub-item">
                 <div class="pub-title">
                     Advanced Modeling of Thermal-Mechanical Systems
                 </div>
@@ -138,13 +143,10 @@
                     A study exploring high‑fidelity simulation techniques for complex thermal‑mechanical interactions 
                     in industrial systems. Includes validation against experimental data.
                 </div>
-                <a href="#" target="_blank">
-                    View Publication →
-                </a>
-            </div>
+            </a>
 
             <!-- Placeholder Publication 3 -->
-            <div class="pub-item">
+            <a href="#" target="_blank" class="pub-item">
                 <div class="pub-title">
                     Optimization Strategies for Large‑Scale Industrial Processes
                 </div>
@@ -158,10 +160,7 @@
                     This work presents optimization frameworks for improving efficiency, reducing waste, and 
                     enhancing reliability in large‑scale industrial operations.
                 </div>
-                <a href="#" target="_blank">
-                    View Publication →
-                </a>
-            </div>
+            </a>
         </div>
     </div>
 
