@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Sent – Patate324</title>
+    
+    <!-- CRITICAL: Set theme BEFORE any visible content loads -->
+    <script src="/assets/js/theme-init.js"></script>
+    
+    <!-- Day/Night Toggle CSS -->
+    <link rel="stylesheet" href="/assets/day-night-toggle/toggle.css">
+    
+    <!-- Site Theme CSS -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    
+    <!-- Mobile Menu CSS -->
+    <link rel="stylesheet" href="/assets/css/mobile-menu.css">
+    
+    <style>
+        /* Success page specific styles */
+        .success-container {
+            max-width: 600px;
+            margin: 100px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .success-card {
+            background: linear-gradient(180deg, 
+                color-mix(in oklab, var(--bg-header) 90%, transparent), 
+                var(--bg-header));
+            padding: 50px 40px;
+            border-radius: 10px;
+            border: 1px solid rgba(106, 165, 255, 0.2);
+            box-shadow: var(--shadow);
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 30px;
+            background: color-mix(in oklab, var(--accent-primary) 15%, transparent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .success-icon svg {
+            width: 50px;
+            height: 50px;
+            stroke: var(--accent-primary);
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+        }
+
+        .success-message {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 35px;
+        }
+
+        .home-button {
+            display: inline-block;
+            background-color: var(--accent-primary);
+            color: #ffffff;
+            padding: 14px 32px;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .home-button:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            color: #ffffff;
+        }
+
+        .home-button:active {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .success-container {
+                margin: 60px auto;
+            }
+
+            .success-card {
+                padding: 40px 30px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .success-message {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
+
+    <div class="success-container">
+        <div class="success-card">
+            <!-- Success checkmark icon -->
+            <div class="success-icon">
+                <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+            </div>
+
+            <h1>Message Sent!</h1>
+            
+            <p class="success-message">
+                Thank you for reaching out. Your message has been successfully submitted. 
+                I'll get back to you as soon as possible.
+            </p>
+
+            <a href="/en/home/" class="home-button">Return to Homepage</a>
+        </div>
+    </div>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Day/Night Toggle JavaScript -->
+    <script src="/assets/day-night-toggle/toggle.js"></script>
+    
+    <!-- Components Loader (loads header, footer, and initializes everything) -->
+    <script src="/assets/js/components.js"></script>
+
+</body>
+</html>
