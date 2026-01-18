@@ -97,39 +97,26 @@
         // Detect language from URL or localStorage
         function detectLanguage() {
             const path = window.location.pathname;
-            const stored = localStorage.getItem('404-language');
-            console.log('Stored language:', stored);
+            const urlLang = path.includes('/fr/') ? 'fr' : (path.includes('/en/') ? 'en' : null);
+            
+            // Check if we have a stored preference for THIS specific 404 path
+            const storedKey = '404-language-' + path;
+            const stored = localStorage.getItem(storedKey);
+            
             console.log('Path:', path);
+            console.log('URL language:', urlLang);
+            console.log('Stored language for this path:', stored);
             
-            // If localStorage exists AND matches the URL language prefix, use it
-            // OR if localStorage exists and URL has no language prefix, use it
-            const urlHasFr = path.includes('/fr/');
-            const urlHasEn = path.includes('/en/');
-            
+            // If we have a stored preference for this exact path, use it
             if (stored) {
-                // If stored language matches URL, use it (user toggled before)
-                if ((stored === 'fr' && urlHasFr) || (stored === 'en' && urlHasEn)) {
-                    console.log('Using stored language that matches URL');
-                    return stored;
-                }
-                // If stored language differs from URL, user toggled - respect their choice
-                if ((stored === 'fr' && !urlHasEn) || (stored === 'en' && !urlHasFr)) {
-                    console.log('Using stored language (user toggled)');
-                    return stored;
-                }
-                // If URL contradicts stored, clear localStorage and use URL (fresh 404 from different language section)
-                console.log('URL contradicts stored language, using URL and clearing storage');
-                localStorage.removeItem('404-language');
+                console.log('Using stored language for this path');
+                return stored;
             }
             
-            // No valid localStorage, detect from URL
-            if (urlHasFr) {
-                console.log('Detected fr from URL');
-                return 'fr';
-            }
-            if (urlHasEn) {
-                console.log('Detected en from URL');
-                return 'en';
+            // Otherwise, use URL language or default to English
+            if (urlLang) {
+                console.log('Using URL language');
+                return urlLang;
             }
             
             console.log('Defaulting to en');
@@ -145,8 +132,12 @@
             console.log('__404_TOGGLE_LANGUAGE__ called');
             const currentLang = detectLanguage();
             const newLang = currentLang === 'en' ? 'fr' : 'en';
+            const path = window.location.pathname;
+            const storedKey = '404-language-' + path;
+            
             console.log('Switching from', currentLang, 'to', newLang);
-            localStorage.setItem('404-language', newLang);
+            console.log('Storing preference for path:', path);
+            localStorage.setItem(storedKey, newLang);
             console.log('Reloading page...');
             window.location.reload();
         };
