@@ -1,3 +1,11 @@
+/*
+*   Website Design & Development Disclosure
+*   ========================================
+*   This website was created with the assistance of Claude AI (Anthropic) and Copilot AI (Microsoft).
+*   AI was used for: code generation, design layout, translation, and content structuring.
+*   
+*   Final review, content, content editing, and customization was performed by the site owner.
+*/
 // Component loader - loads header and footer
 (function() {
     // Page mapping (English → French)
@@ -5,7 +13,7 @@
         '/en/home/': '/fr/acceuil/',
         '/en/about/': '/fr/a-propos/',
         '/en/publications/': '/fr/publications/',
-        '/en/blog/': '/fr/blog/',
+        '/en/blog/': '/fr/blogue/',
         '/en/contact/': '/fr/contact/'
     };
 
@@ -29,7 +37,7 @@
         {
             enPath: '/en/about/',
             en: { title: 'About me', text: 'About Me' },
-            fr: { title: 'À propos', text: 'À Propos' }
+            fr: { title: 'À propos', text: 'À propos' }
         },
         {
             enPath: '/en/publications/',
@@ -39,7 +47,7 @@
         {
             enPath: '/en/blog/',
             en: { title: 'Blog posts', text: 'Blog' },
-            fr: { title: 'Articles de Blog', text: 'Blog' }
+            fr: { title: 'Articles de Blogue', text: 'Blogue' }
         },
         {
             enPath: '/en/contact/',

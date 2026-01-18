@@ -4,7 +4,7 @@
  * 
  * The MIT License (MIT)
  * Copyright (c) 2026 Jhey (https://codepen.io/jh3y/pen/LYgjpYZ)
- * Code Modified by Patate324 for use as an asset
+ * Code Modified by Patate324 for use as an asset with AI assistance by Claude AI (Anthropic) and Copilot AI (Microsoft)
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal

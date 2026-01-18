@@ -1,3 +1,11 @@
+/*
+*   Website Design & Development Disclosure
+*   ========================================
+*   This website was created with the assistance of Claude AI (Anthropic) and Copilot AI (Microsoft).
+*   AI was used for: code generation, design layout, translation, and content structuring.
+*   
+*   Final review, content, content editing, and customization was performed by the site owner.
+*/
 // Theme initialization - must run in <head> to prevent flash
 (function() {
     // Detect browser preference for dark mode
