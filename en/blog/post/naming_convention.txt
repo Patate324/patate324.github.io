@@ -1,0 +1,2 @@
+Naming convention for posts should be
+yyyy-mm-dd-##

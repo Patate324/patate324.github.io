@@ -1,33 +1,71 @@
 // Component loader - loads header and footer
 (function() {
-    // Translation data
+    // Page mapping (English → French)
+    const pageMap = {
+        '/en/home/': '/fr/acceuil/',
+        '/en/about/': '/fr/a-propos/',
+        '/en/publications/': '/fr/publications/',
+        '/en/blog/': '/fr/blog/',
+        '/en/contact/': '/fr/contact/'
+    };
+
+    // Create reverse map (French → English)
+    const reversePageMap = Object.entries(pageMap).reduce((acc, [en, fr]) => {
+        acc[fr] = en;
+        return acc;
+    }, {});
+
+    // Navigation order and metadata (keys match pageMap)
+    const navConfig = [
+        {
+            enPath: '/en/home/',
+            en: { title: 'Home page', text: 'Home' },
+            fr: { title: "Page d'accueil", text: 'Accueil' }
+        },
+        {
+            enPath: '/en/about/',
+            en: { title: 'About me', text: 'About Me' },
+            fr: { title: 'À propos', text: 'À Propos' }
+        },
+        {
+            enPath: '/en/publications/',
+            en: { title: 'Research and publications', text: 'Publications' },
+            fr: { title: 'Recherche et publications', text: 'Publications' }
+        },
+        {
+            enPath: '/en/blog/',
+            en: { title: 'Blog posts', text: 'Blog' },
+            fr: { title: 'Articles de Blog', text: 'Blog' }
+        },
+        {
+            enPath: '/en/contact/',
+            en: { title: 'Get in touch', text: 'Contact' },
+            fr: { title: 'Contacter', text: 'Contact' }
+        }
+    ];
+
+    // Build navigation from config + pageMap
     const translations = {
         en: {
-            nav: [
-                { href: 'home.html', title: 'Go to homepage', text: 'Home' },
-                { href: 'about.html', title: 'Learn more about me', text: 'About Me' },
-                { href: 'publications.html', title: 'View my research and publications', text: 'Publications' },
-                { href: 'blog.html', title: 'Read my blog posts', text: 'Blog' },
-                { href: 'contacts.html', title: 'Get in touch', text: 'Contact' }
-            ],
+            nav: navConfig.map(item => ({
+                href: item.enPath,
+                title: item.en.title,
+                text: item.en.text
+            })),
             langToggle: {
                 text: 'Français',
-                title: 'Passer au français',
-                href: '../fr/'
+                title: 'Passer au français'
             }
         },
         fr: {
-            nav: [
-                { href: 'home.html', title: "Page d'accueil", text: 'Accueil' },
-                { href: 'about.html', title: 'À propos', text: 'À Propos' },
-                { href: 'publications.html', title: 'Recherche et publications', text: 'Publications' },
-                { href: 'blog.html', title: 'Lire mes articles de Blog', text: 'Blog' },
-                { href: 'contacts.html', title: 'Contacter', text: 'Contact' }
-            ],
+            nav: navConfig.map(item => ({
+                href: pageMap[item.enPath], // Derive French URL from pageMap
+                title: item.fr.title,
+                text: item.fr.text
+            })),
             langToggle: {
                 text: 'English',
-                title: 'Switch to English',
-                href: '../en/'
+                title: 'Switch to English'
             }
         }
     };
@@ -38,6 +76,30 @@
         if (path.includes('/fr/')) return 'fr';
         if (path.includes('/en/')) return 'en';
         return 'en'; // default
+    }
+
+    // Get current page path (normalized with trailing slash)
+    function getCurrentPagePath() {
+        let path = window.location.pathname;
+        // Ensure trailing slash
+        if (!path.endsWith('/')) {
+            path += '/';
+        }
+        return path;
+    }
+
+    // Get the corresponding page in the other language
+    function getToggledLanguagePath() {
+        const currentPath = getCurrentPagePath();
+        const currentLang = detectLanguage();
+        
+        if (currentLang === 'en') {
+            // English → French
+            return pageMap[currentPath] || '/fr/';
+        } else {
+            // French → English
+            return reversePageMap[currentPath] || '/en/';
+        }
     }
 
     const currentLang = detectLanguage();
@@ -57,13 +119,13 @@
     // Function to populate navigation links
     function populateNavigation() {
         const navData = translations[currentLang].nav;
-        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        const currentPath = getCurrentPagePath();
         
         // Desktop navigation
         const navLinks = document.getElementById('nav-links');
         if (navLinks) {
             navLinks.innerHTML = navData.map(item => `
-                <li><a href="${item.href}" title="${item.title}"${item.href === currentPage ? ' aria-current="page"' : ''}>${item.text}</a></li>
+                <li><a href="${item.href}" title="${item.title}"${item.href === currentPath ? ' aria-current="page"' : ''}>${item.text}</a></li>
             `).join('');
         }
         
@@ -71,7 +133,7 @@
         const mobileNavLinks = document.getElementById('mobile-nav-links');
         if (mobileNavLinks) {
             mobileNavLinks.innerHTML = navData.map(item => `
-                <li><a href="${item.href}" title="${item.title}"${item.href === currentPage ? ' aria-current="page"' : ''}>${item.text}</a></li>
+                <li><a href="${item.href}" title="${item.title}"${item.href === currentPath ? ' aria-current="page"' : ''}>${item.text}</a></li>
             `).join('');
         }
     }
@@ -79,13 +141,13 @@
     // Function to set up language toggle
     function setupLanguageToggle() {
         const langData = translations[currentLang].langToggle;
-        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        const toggledPath = getToggledLanguagePath();
         
         // Desktop language toggle
         const langToggle = document.getElementById('language-toggle');
         const langText = document.getElementById('language-text');
         if (langToggle && langText) {
-            langToggle.href = langData.href + currentPage;
+            langToggle.href = toggledPath;
             langToggle.title = langData.title;
             langText.textContent = langData.text;
         }
@@ -94,7 +156,7 @@
         const mobileLangToggle = document.getElementById('mobile-language-toggle');
         const mobileLangText = document.getElementById('mobile-language-text');
         if (mobileLangToggle && mobileLangText) {
-            mobileLangToggle.href = langData.href + currentPage;
+            mobileLangToggle.href = toggledPath;
             mobileLangToggle.title = langData.title;
             mobileLangText.textContent = langData.text;
         }
@@ -231,7 +293,7 @@
         const path = window.location.pathname;
         // If we're in /en/ or /fr/ folder, go up one level
         if (path.includes('/en/') || path.includes('/fr/')) {
-            return '../assets/components/';
+            return '/assets/components/';
         }
         // If we're at root, use relative path
         return 'assets/components/';
