@@ -89,8 +89,18 @@
     <!-- Footer Placeholder -->
     <div id="footer-placeholder"></div>
 
+    <!-- Day/Night Toggle JavaScript -->
+    <script src="/assets/day-night-toggle/toggle.js"></script>
+    
+    <!-- Components Loader (loads pageMap and components) -->
+    <script src="/assets/js/components.js"></script>
+    
     <!-- Language-aware 404 Script -->
     <script>
+        // Access pageMap from components.js (loaded above)
+        const pageMap = window.__PAGE_MAP__;
+        const reversePageMap = window.__REVERSE_PAGE_MAP__;
+
         // Detect language from URL or localStorage
         function detectLanguage() {
             const path = window.location.pathname;
@@ -109,18 +119,43 @@
             return 'en';
         }
         
+        // Check if the current 404 path has an equivalent in the other language
+        function getEquivalentPage() {
+            const path = window.location.pathname;
+            const currentLang = detectLanguage();
+            
+            // Normalize path to have trailing slash
+            const normalizedPath = path.endsWith('/') ? path : path + '/';
+            
+            if (currentLang === 'en') {
+                // Check if this English path exists in pageMap
+                return pageMap[normalizedPath] || null;
+            } else {
+                // Check if this French path exists in reversePageMap
+                return reversePageMap[normalizedPath] || null;
+            }
+        }
+        
         // Override the language detection for components.js
         window.__FORCE_404_LANGUAGE__ = detectLanguage();
         
         // Allow language switching on 404 page
         window.__404_TOGGLE_LANGUAGE__ = function() {
-            const currentLang = detectLanguage();
-            const newLang = currentLang === 'en' ? 'fr' : 'en';
-            const path = window.location.pathname;
-            const storedKey = '404-language-' + path;
+            const equivalentPage = getEquivalentPage();
             
-            localStorage.setItem(storedKey, newLang);
-            window.location.reload();
+            if (equivalentPage) {
+                // If an equivalent page exists in the other language, navigate to it
+                window.location.href = equivalentPage;
+            } else {
+                // Otherwise, just toggle the 404 page language
+                const currentLang = detectLanguage();
+                const newLang = currentLang === 'en' ? 'fr' : 'en';
+                const path = window.location.pathname;
+                const storedKey = '404-language-' + path;
+                
+                localStorage.setItem(storedKey, newLang);
+                window.location.reload();
+            }
         };
         
         const lang = detectLanguage();
@@ -156,7 +191,7 @@
     <!-- Day/Night Toggle JavaScript -->
     <script src="/assets/day-night-toggle/toggle.js"></script>
     
-    <!-- Components Loader -->
+    <!-- Components Loader (loads pageMap and components) -->
     <script src="/assets/js/components.js"></script>
     
     <!-- Override language toggle for 404 page -->
