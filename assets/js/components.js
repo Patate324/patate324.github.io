@@ -4,7 +4,7 @@
     const translations = {
         en: {
             nav: [
-                { href: 'index.html', title: 'Go to homepage', text: 'Home' },
+                { href: 'home.html', title: 'Go to homepage', text: 'Home' },
                 { href: 'about.html', title: 'Learn more about me', text: 'About Me' },
                 { href: 'publications.html', title: 'View my research and publications', text: 'Publications' },
                 { href: 'blog.html', title: 'Read my blog posts', text: 'Blog' },
@@ -18,7 +18,7 @@
         },
         fr: {
             nav: [
-                { href: 'index.html', title: "Page d'accueil", text: 'Accueil' },
+                { href: 'home.html', title: "Page d'accueil", text: 'Accueil' },
                 { href: 'about.html', title: 'À propos', text: 'À Propos' },
                 { href: 'publications.html', title: 'Recherche et publications', text: 'Publications' },
                 { href: 'blog.html', title: 'Lire mes articles de Blog', text: 'Blog' },
