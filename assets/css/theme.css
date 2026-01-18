@@ -140,12 +140,6 @@ nav a:focus-visible {
     transform: translateY(0);
 }
 
-/* Flag emoji styling */
-.language-flag {
-    font-size: 1.1rem;
-    line-height: 1;
-}
-
 /* ====== Hero Section ====== */
 .hero {
     display: flex;

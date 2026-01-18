@@ -6,13 +6,13 @@
     <title>Blog – Patate324</title>
     
     <!-- CRITICAL: Set theme BEFORE any visible content loads -->
-    <script src="assets/js/theme-init.js"></script>
+    <script src="../assets/js/theme-init.js"></script>
     
     <!-- Day/Night Toggle CSS -->
-    <link rel="stylesheet" href="assets/day-night-toggle/toggle.css">
+    <link rel="stylesheet" href="../assets/day-night-toggle/toggle.css">
     
     <!-- Site Theme CSS -->
-    <link rel="stylesheet" href="assets/css/theme.css">
+    <link rel="stylesheet" href="../assets/css/theme.css">
     
     <style>
         /* Blog-specific styles */
@@ -91,15 +91,21 @@
         <div class="header-right">
             <nav aria-label="Main navigation">
                 <ul>
-                    <li><a href="index.html" title="Go to homepage">Home</a></li>
+                    <li><a href="index.html" title="Go to homepage" aria-current="page">Home</a></li>
                     <li><a href="about.html" title="Learn more about me">About Me</a></li>
                     <li><a href="publications.html" title="View my research and publications">Publications</a></li>
-                    <li><a href="blog.html" title="Read my blog posts" aria-current="page">Blog</a></li>
+                    <li><a href="blog.html" title="Read my blog posts">Blog</a></li>
                     <li><a href="contacts.html" title="Get in touch">Contact</a></li>
                 </ul>
             </nav>
-            <!-- Theme Toggle -->
-            <div id="theme-toggle-container" aria-label="Theme toggle"></div>
+            <div class="header-controls">
+                <!-- Language Toggle -->
+                <a href="../fr/index.html" class="language-toggle" title="Passer au français">
+                    <span>Français</span>
+                </a>
+                <!-- Theme Toggle -->
+                <div id="theme-toggle-container" aria-label="Theme toggle"></div>
+            </div>
         </div>
     </header>
 
@@ -142,8 +148,8 @@
     </footer>
 
     <!-- Day/Night Toggle JavaScript -->
-    <script src="assets/day-night-toggle/toggle.js"></script>
-    <script src="assets/js/theme-toggle-init.js"></script>
+    <script src="../assets/day-night-toggle/toggle.js"></script>
+    <script src="../assets/js/theme-toggle-init.js"></script>
 
 </body>
 </html>
