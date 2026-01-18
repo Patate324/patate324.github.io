@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patate324</title>
+    <script>
+        // Detect browser language
+        const userLang = navigator.language || navigator.userLanguage;
+        
+        // Redirect to appropriate language
+        if (userLang.startsWith('fr')) {
+            window.location.href = '/fr/index.html';
+        } else {
+            window.location.href = '/en/index.html';
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            background: #0b0c0f;
+            color: #e6e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .loading {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="loading">
+        <h1>Redirecting...</h1>
+        <p>If you are not redirected, please choose:</p>
+        <a href="/en/index.html" style="color: #6aa5ff; margin-right: 20px;">English</a>
+        <a href="/fr/index.html" style="color: #6aa5ff;">Français</a>
+    </div>
+</body>
+</html>
