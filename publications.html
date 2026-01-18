@@ -55,6 +55,13 @@
             box-shadow: 0 15px 40px rgba(0,0,0,0.4);
         }
         
+        /* Enhanced glow for dark mode */
+        [data-dark-mode="true"] .pub-item:hover {
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4),
+                        0 0 0 1px rgba(106, 165, 255, 0.4),
+                        0 0 20px rgba(106, 165, 255, 0.2);
+        }
+        
         .pub-item .pub-link {
             display: none;
         }

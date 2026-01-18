@@ -39,11 +39,26 @@
             box-shadow: var(--shadow);
             border: 1px solid rgba(106, 165, 255, 0.2);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            color: inherit;
         }
 
         .post-preview:hover {
             transform: translateY(-2px);
             box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+        
+        /* Enhanced glow for dark mode */
+        [data-dark-mode="true"] .post-preview:hover {
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4),
+                        0 0 0 1px rgba(106, 165, 255, 0.4),
+                        0 0 20px rgba(106, 165, 255, 0.2);
+        }
+        
+        .post-preview .post-link {
+            display: none;
         }
 
         .post-title {
@@ -92,37 +107,34 @@
         <h1>Blog</h1>
 
         <!-- Blog Post Preview 1 -->
-        <div class="post-preview">
+        <a href="blog-post-1.html" class="post-preview">
             <div class="post-title">Understanding Thermal‑Mechanical Coupling in Modern Engineering</div>
             <div class="post-meta">Posted on January 10, 2026</div>
             <div class="post-excerpt">
                 A quick dive into how thermal and mechanical effects interact in complex systems, 
                 and why accurate modeling is essential for industrial applications.
             </div>
-            <a href="blog-post-1.html">Read more →</a>
-        </div>
+        </a>
 
         <!-- Blog Post Preview 2 -->
-        <div class="post-preview">
+        <a href="blog-post-2.html" class="post-preview">
             <div class="post-title">What Engineers Can Learn from Optimization Theory</div>
             <div class="post-meta">Posted on December 22, 2025</div>
             <div class="post-excerpt">
                 Optimization isn't just math – it's a mindset. Here's how engineers can apply 
                 optimization principles to design, workflows, and decision‑making.
             </div>
-            <a href="blog-post-2.html">Read more →</a>
-        </div>
+        </a>
 
         <!-- Blog Post Preview 3 -->
-        <div class="post-preview">
+        <a href="blog-post-3.html" class="post-preview">
             <div class="post-title">A Practical Guide to High‑Fidelity Simulation Tools</div>
             <div class="post-meta">Posted on November 30, 2025</div>
             <div class="post-excerpt">
                 From mesh refinement to solver selection, this guide breaks down the essentials 
                 of running accurate and efficient simulations.
             </div>
-            <a href="blog-post-3.html">Read more →</a>
-        </div>
+        </a>
     </div>
 
     <footer>
