@@ -96,14 +96,16 @@
         
         // Detect language from URL or localStorage
         function detectLanguage() {
-            const path = window.location.pathname;
-            // Check URL first
-            if (path.includes('/fr/')) return 'fr';
-            if (path.includes('/en/')) return 'en';
-            // Check if there's a language preference stored for 404
+            // Check localStorage FIRST (this overrides URL detection on 404 pages)
             const stored = localStorage.getItem('404-language');
             console.log('Stored language:', stored);
             if (stored) return stored;
+            
+            // Then check URL
+            const path = window.location.pathname;
+            if (path.includes('/fr/')) return 'fr';
+            if (path.includes('/en/')) return 'en';
+            
             return 'en';
         }
         
