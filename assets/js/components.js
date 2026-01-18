@@ -72,6 +72,11 @@
 
     // Detect current language from URL
     function detectLanguage() {
+        // Check if we're on 404 page with forced language
+        if (window.__FORCE_404_LANGUAGE__) {
+            return window.__FORCE_404_LANGUAGE__;
+        }
+        
         const path = window.location.pathname;
         if (path.includes('/fr/')) return 'fr';
         if (path.includes('/en/')) return 'en';
@@ -92,6 +97,11 @@
     function getToggledLanguagePath() {
         const currentPath = getCurrentPagePath();
         const currentLang = detectLanguage();
+        
+        // Special case: if we're on the 404 page, just toggle the language of the 404 page itself
+        if (currentPath === '/404.html' || currentPath === '/404/') {
+            return '/404.html';
+        }
         
         if (currentLang === 'en') {
             // English → French

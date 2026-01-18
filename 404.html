@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found – 404</title>
+    
+    <!-- CRITICAL: Set theme BEFORE any visible content loads -->
+    <script src="/assets/js/theme-init.js"></script>
+    
+    <!-- Day/Night Toggle CSS -->
+    <link rel="stylesheet" href="/assets/day-night-toggle/toggle.css">
+    
+    <!-- Site Theme CSS -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    
+    <!-- Mobile Menu CSS -->
+    <link rel="stylesheet" href="/assets/css/mobile-menu.css">
+    
+    <style>
+        .error-container {
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .error-code {
+            font-size: 6rem;
+            font-weight: bold;
+            margin: 0;
+            opacity: 0.2;
+        }
+        
+        .error-message {
+            font-size: 1.5rem;
+            margin: 1rem 0;
+        }
+        
+        .error-description {
+            margin: 1.5rem 0;
+            line-height: 1.6;
+        }
+        
+        .error-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .error-links a {
+            padding: 0.75rem 1.5rem;
+            background: var(--accent-color, #007acc);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: opacity 0.2s;
+        }
+        
+        .error-links a:hover {
+            opacity: 0.8;
+        }
+        
+        .suggestion {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: var(--bg-secondary, #f5f5f5);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
+
+    <!-- Error Content -->
+    <div class="error-container">
+        <h1 class="error-code">404</h1>
+        <h2 class="error-message" id="error-title">Page Not Found</h2>
+        <p class="error-description" id="error-description">
+            The page you're looking for doesn't exist or may have been moved.
+        </p>
+        
+        <div class="suggestion" id="language-suggestion" style="display: none;">
+            <p id="suggestion-text"></p>
+        </div>
+        
+        <div class="error-links">
+            <a href="/en/home/" id="home-link">Go to Homepage</a>
+            <a href="javascript:history.back()" id="back-link">Go Back</a>
+        </div>
+    </div>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Language-aware 404 Script -->
+    <script>
+        // Detect language from URL or localStorage
+        function detectLanguage() {
+            const path = window.location.pathname;
+            // Check URL first
+            if (path.includes('/fr/')) return 'fr';
+            if (path.includes('/en/')) return 'en';
+            // Check if there's a language preference stored for 404
+            const stored = localStorage.getItem('404-language');
+            if (stored) return stored;
+            return 'en';
+        }
+        
+        // Override the language detection for components.js
+        window.__FORCE_404_LANGUAGE__ = detectLanguage();
+        
+        // Allow language switching on 404 page
+        window.__404_TOGGLE_LANGUAGE__ = function() {
+            const currentLang = detectLanguage();
+            const newLang = currentLang === 'en' ? 'fr' : 'en';
+            localStorage.setItem('404-language', newLang);
+            window.location.reload();
+        };
+        
+        const lang = detectLanguage();
+        const requestedPath = window.location.pathname;
+        
+        // Translations for 404 page
+        const translations = {
+            en: {
+                title: 'Page Not Found',
+                description: "The page you're looking for doesn't exist or may have been moved.",
+                homeLink: 'Go to Homepage',
+                backLink: 'Go Back',
+                suggestion: 'This page might be available in French. Would you like to try the French version?',
+                tryFrench: 'Try French Version'
+            },
+            fr: {
+                title: 'Page Non Trouvée',
+                description: "La page que vous recherchez n'existe pas ou a peut-être été déplacée.",
+                homeLink: "Aller à l'accueil",
+                backLink: 'Retour',
+                suggestion: 'Cette page pourrait être disponible en anglais. Voulez-vous essayer la version anglaise ?',
+                tryEnglish: 'Essayer la version anglaise'
+            }
+        };
+        
+        // Update page content based on language
+        const t = translations[lang];
+        document.documentElement.lang = lang;
+        document.title = `${t.title} – 404`;
+        document.getElementById('error-title').textContent = t.title;
+        document.getElementById('error-description').textContent = t.description;
+        document.getElementById('home-link').textContent = t.homeLink;
+        document.getElementById('home-link').href = lang === 'fr' ? '/fr/acceuil/' : '/en/home/';
+        document.getElementById('back-link').textContent = t.backLink;
+        
+        // Suggest alternate language if page might exist there
+        function suggestAlternateLanguage() {
+            const suggestion = document.getElementById('language-suggestion');
+            const suggestionText = document.getElementById('suggestion-text');
+            
+            if (lang === 'en' && requestedPath.includes('/en/')) {
+                // Suggest French version
+                const frenchPath = requestedPath.replace('/en/', '/fr/');
+                suggestionText.innerHTML = `${t.suggestion} <a href="${frenchPath}">${t.tryFrench}</a>`;
+                suggestion.style.display = 'block';
+            } else if (lang === 'fr' && requestedPath.includes('/fr/')) {
+                // Suggest English version
+                const englishPath = requestedPath.replace('/fr/', '/en/');
+                suggestionText.innerHTML = `${t.suggestion} <a href="${englishPath}">${t.tryEnglish}</a>`;
+                suggestion.style.display = 'block';
+            }
+        }
+        
+        suggestAlternateLanguage();
+    </script>
+
+    <!-- Day/Night Toggle JavaScript -->
+    <script src="/assets/day-night-toggle/toggle.js"></script>
+    
+    <!-- Components Loader -->
+    <script src="/assets/js/components.js"></script>
+    
+    <!-- Override language toggle for 404 page -->
+    <script>
+        // Wait for components to load, then override language toggle behavior
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                // Override desktop language toggle
+                const langToggle = document.getElementById('language-toggle');
+                if (langToggle) {
+                    langToggle.href = '#';
+                    langToggle.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        window.__404_TOGGLE_LANGUAGE__();
+                    });
+                }
+                
+                // Override mobile language toggle
+                const mobileLangToggle = document.getElementById('mobile-language-toggle');
+                if (mobileLangToggle) {
+                    mobileLangToggle.href = '#';
+                    mobileLangToggle.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        window.__404_TOGGLE_LANGUAGE__();
+                    });
+                }
+            }, 100); // Small delay to ensure components are loaded
+        });
+    </script>
+</body>
+</html>
