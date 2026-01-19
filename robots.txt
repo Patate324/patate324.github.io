@@ -1,0 +1,11 @@
+# robots.txt for Patate324's Website
+
+User-agent: *
+Allow: /
+
+# Disallow success pages (no need to index these)
+Disallow: /en/contact/success/
+Disallow: /fr/contact/success/
+
+# Sitemap location
+Sitemap: https://patate324.github.io/sitemap.xml
