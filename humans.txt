@@ -1,0 +1,16 @@
+/* TEAM */
+Developer: Patate324 (myself)
+Site: https://patate324.github.io
+Location: Canada!
+
+/* THANKS */
+AI Assistance: Claude AI (Anthropic) and Copilot AI (Microsoft)
+Day/Night Toggle: Jhey (https://codepen.io/jh3y/pen/LYgjpYZ)
+
+/* SITE */
+Created: Mostly on 2026-01-17 & 2026-01-18
+Standards: HTML5, CSS3, JavaScript ES6+
+Components: Custom navigation system, bilingual support (EN/FR)
+Software: VS Code, Git, github
+Languages: English, Français
+Hosting (for now): GitHub Pages

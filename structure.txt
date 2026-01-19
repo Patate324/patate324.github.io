@@ -2,8 +2,8 @@ assets/components/footer.html
 assets/components/header.html
 assets/css/mobile-menu.css
 assets/css/theme.css
-assets/day-night-toggle/dark-mode-toggle.css
-assets/day-night-toggle/dark-mode-toggle.js
+assets/css/dark-mode-toggle.css
+assets/js/dark-mode-toggle.js
 assets/js/components.js
 assets/js/theme-init.js
 en/about/index.html
@@ -11,14 +11,14 @@ en/blog/index.html
 en/blog/post/2026-01-01-01/index.html
 en/contact/index.html
 en/contact/success/index.html
-en/home/index.html
+en/index.html
 en/publications/index.html
 fr/a-propos/index.html
 fr/blogue/index.html
 fr/blogue/publication/2026-01-01-01/index.html
 fr/contact/index.html
 fr/contact/success/index.html
-fr/acceuil/index.html
+fr/index.html
 fr/publications/index.html
 index.html
 404.html
