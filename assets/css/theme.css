@@ -88,6 +88,15 @@ header {
     font-weight: 600;
     color: var(--accent-primary);
     letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-icon {
+    width: 24px;
+    height: 24px;
+    display: inline-block;
 }
 
 nav ul {
