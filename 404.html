@@ -92,7 +92,7 @@
         </p>
         
         <div class="error-links">
-            <a href="/en/home/" id="home-link">Go to Homepage</a>
+            <a href="/en/" id="home-link">Go to Homepage</a>
             <a href="javascript:history.back()" id="back-link">Go Back</a>
         </div>
     </div>
@@ -215,7 +215,7 @@
         document.getElementById('error-title').textContent = t.title;
         document.getElementById('error-description').textContent = t.description;
         document.getElementById('home-link').textContent = t.homeLink;
-        document.getElementById('home-link').href = lang === 'fr' ? '/fr/acceuil/' : '/en/home/';
+        document.getElementById('home-link').href = lang === 'fr' ? '/fr/' : '/en/';
         document.getElementById('back-link').textContent = t.backLink;
     </script>
 
