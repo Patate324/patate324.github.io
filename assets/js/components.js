@@ -10,7 +10,7 @@
 (function() {
     // Page mapping (English → French)
     const pageMap = {
-        '/en/home/': '/fr/acceuil/',
+        '/en/': '/fr/',
         '/en/about/': '/fr/a-propos/',
         '/en/publications/': '/fr/publications/',
         '/en/blog/': '/fr/blogue/',
@@ -30,7 +30,7 @@
     // Navigation order and metadata (keys match pageMap)
     const navConfig = [
         {
-            enPath: '/en/home/',
+            enPath: '/en/',
             en: { title: 'Home page', text: 'Home' },
             fr: { title: "Page d'accueil", text: 'Accueil' }
         },
