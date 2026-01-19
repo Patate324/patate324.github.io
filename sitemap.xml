@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <!-- Root / Language Selector -->
+  <url>
+    <loc>https://patate324.github.io/</loc>
+    <lastmod>2026-01-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- English Pages -->
+  <url>
+    <loc>https://patate324.github.io/en/</loc>
+    <lastmod>2026-01-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://patate324.github.io/fr/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://patate324.github.io/en/" />
+  </url>
+
+  <url>
+    <loc>https://patate324.github.io/en/about/</loc>
+    <lastmod>2026-01-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://patate324.github.io/fr/a-propos/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://patate324.github.io/en/about/" />
+  </url>
+
+  <url>
+    <loc>https://patate324.github.io/en/publications/</loc>
+    <lastmod>2026-01-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://patate324.github.io/fr/publications/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://patate324.github.io/en/publications/" />
+  </url>
+
+  <url>
+    <loc>https://patate324.github.io/en/blog/</loc>
+    <lastmod>2026-01-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://patate324.github.io/fr/blogue/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://patate324.github.io/en/blog/" />
+  </url>
+
+  <url>
+    <loc>https://patate324.github.io/en/contact/</loc>
+    <lastmod>2026-01-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://patate324.github.io/fr/contact/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://patate324.github.io/en/contact/" />
+  </url>
+
+  <!-- French Pages -->
+  <url>
+    <loc>https://patate324.github.io/fr/</loc>
+    <lastmod>2026-01-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://patate324.github.io/fr/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://patate324.github.io/en/" />
+  </url>
+
+  <url>
+    <loc>https://patate324.github.io/fr/a-propos/</loc>
+    <lastmod>2026-01-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://patate324.github.io/fr/a-propos/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://patate324.github.io/en/about/" />
+  </url>
+
+  <url>
+    <loc>https://patate324.github.io/fr/publications/</loc>
+    <lastmod>2026-01-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://patate324.github.io/fr/publications/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://patate324.github.io/en/publications/" />
+  </url>
+
+  <url>
+    <loc>https://patate324.github.io/fr/blogue/</loc>
+    <lastmod>2026-01-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://patate324.github.io/fr/blogue/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://patate324.github.io/en/blog/" />
+  </url>
+
+  <url>
+    <loc>https://patate324.github.io/fr/contact/</loc>
+    <lastmod>2026-01-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://patate324.github.io/fr/contact/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://patate324.github.io/en/contact/" />
+  </url>
+
+</urlset>
