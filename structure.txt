@@ -3,7 +3,7 @@ assets/components/header.html
 assets/css/mobile-menu.css
 assets/css/theme.css
 assets/day-night-toggle/dark-mode-toggle.css
-assets/day-night-toggle/toggle.js
+assets/day-night-toggle/dark-mode-toggle.js
 assets/js/components.js
 assets/js/theme-init.js
 en/about/index.html
