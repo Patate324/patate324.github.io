@@ -341,7 +341,8 @@
         document.addEventListener('DOMContentLoaded', async () => {
             await Promise.all([
                 loadComponent('header-placeholder', basePath + 'header.html'),
-                loadComponent('footer-placeholder', basePath + 'footer.html')
+                loadComponent('footer-placeholder', basePath + 'footer.html'),
+                loadComponent('head-meta-placeholder', basePath + 'head-meta.html')
             ]);
             initializeComponents();
             // Show body after everything is loaded
@@ -351,7 +352,8 @@
         (async () => {
             await Promise.all([
                 loadComponent('header-placeholder', basePath + 'header.html'),
-                loadComponent('footer-placeholder', basePath + 'footer.html')
+                loadComponent('footer-placeholder', basePath + 'footer.html'),
+                loadComponent('head-meta-placeholder', basePath + 'head-meta.html')
             ]);
             initializeComponents();
             // Show body after everything is loaded
