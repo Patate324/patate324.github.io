@@ -28,6 +28,9 @@
     <!-- Mobile Menu CSS -->
     <link rel="stylesheet" href="/assets/css/mobile-menu.css">
     
+    <!-- Fade-in Animations CSS -->
+    <link rel="stylesheet" href="/assets/css/animations.css">
+    
     <style>
         /* About page specific styles */
         .container {
@@ -126,10 +129,10 @@
     <div id="header-placeholder"></div>
 
     <div class="container">
-        <h1>About Me</h1>
+        <h1 class="fade-in">About Me</h1>
 
         <!-- Profile Section -->
-        <div class="panel">
+        <div class="panel fade-in">
             <div class="profile-section">
                 <div class="profile-picture" aria-label="Profile picture placeholder">
                     <!-- Placeholder for your portrait -->
@@ -149,7 +152,7 @@
         </div>
 
         <!-- Experience -->
-        <div class="panel cv-section">
+        <div class="panel cv-section fade-in">
             <h2>Professional Experience</h2>
             <ul>
                 <li><strong>Role / Company</strong> – Brief description of responsibilities and achievements.</li>
@@ -159,7 +162,7 @@
         </div>
 
         <!-- Education -->
-        <div class="panel cv-section">
+        <div class="panel cv-section fade-in">
             <h2>Education</h2>
             <ul>
                 <li><strong>Degree – Institution</strong> – Field of study, notable work or research.</li>
@@ -169,7 +172,7 @@
 
         <!-- Skills and Values Grid -->
         <div class="grid-2">
-            <div class="panel cv-section">
+            <div class="panel cv-section fade-in">
                 <h2>Technical Skills</h2>
                 <ul>
                     <li>Engineering tools, software, or modeling platforms</li>
@@ -179,7 +182,7 @@
                 </ul>
             </div>
 
-            <div class="panel cv-section">
+            <div class="panel cv-section fade-in">
                 <h2>Professional Values</h2>
                 <ul>
                     <li>Precision and clarity in communication</li>
@@ -199,6 +202,9 @@
     
     <!-- Components Loader (loads header, footer, and initializes everything) -->
     <script src="/assets/js/components.js"></script>
+
+    <!-- Fade-in Animations JavaScript -->
+    <script src="/assets/js/fade-in.js"></script>
 
 </body>
 </html>
