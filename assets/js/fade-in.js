@@ -56,7 +56,7 @@
 
         // Immediately animate elements already in viewport
         elementsInViewport.forEach((el, index) => {
-            el.style.transitionDelay = `${index * 0.12}s`;
+            el.style.transitionDelay = `${index * 0.135}s`;
             // Use requestAnimationFrame to ensure smooth animation
             requestAnimationFrame(() => {
                 el.classList.add('visible');
@@ -86,7 +86,7 @@
                         batchTimer = setTimeout(() => {
                             batchQueue.forEach((batchEl, batchIndex) => {
                                 // Stagger only within this batch
-                                batchEl.style.transitionDelay = `${batchIndex * 0.08}s`;
+                                batchEl.style.transitionDelay = `${batchIndex * 0.09}s`;
                                 batchEl.classList.add('visible');
                                 obs.unobserve(batchEl);
                             });
@@ -95,7 +95,7 @@
                     }
                 });
             }, {
-                threshold: 0.1, // Trigger when 10% visible
+                threshold: 0.15, // Trigger when 15% visible
                 rootMargin: '0px 0px -50px 0px' // Start slightly before element enters
             });
 
