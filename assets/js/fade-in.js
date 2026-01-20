@@ -8,15 +8,16 @@
 */
 
 /*
- * FADE-IN ANIMATION CONTROLLER
+ * FADE-IN ANIMATION CONTROLLER v3
  * ================================
  * 
  * HOW IT WORKS:
  * 1. Finds all elements with fade-in classes
  * 2. Immediately animates elements already in viewport on page load
  * 3. Watches remaining elements with IntersectionObserver
- * 4. Auto-staggers animations: each element gets a 120ms delay
- * 5. Stops watching each element after it animates
+ * 4. Elements on page load: stagger by 120ms each
+ * 5. Elements on scroll: stagger only within their batch (feels snappier)
+ * 6. Stops watching each element after it animates
  */
 
 (function() {
@@ -64,22 +65,33 @@
 
         // Create observer for elements not yet in viewport
         if (elementsOutOfViewport.length > 0) {
+            // Track elements that appear together in one scroll
+            let batchQueue = [];
+            let batchTimer = null;
+
             const observer = new IntersectionObserver((entries, obs) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         const el = entry.target;
                         
-                        // Auto-stagger based on position in visibleElements array
-                        const index = visibleElements.indexOf(el);
-                        if (index !== -1) {
-                            el.style.transitionDelay = `${index * 0.12}s`;
+                        // Add to current batch
+                        batchQueue.push(el);
+                        
+                        // Clear existing timer
+                        if (batchTimer) {
+                            clearTimeout(batchTimer);
                         }
                         
-                        // Add visible class to trigger animation
-                        el.classList.add('visible');
-                        
-                        // Stop watching this element (animate only once)
-                        obs.unobserve(el);
+                        // Process batch after brief delay (catches elements appearing together)
+                        batchTimer = setTimeout(() => {
+                            batchQueue.forEach((batchEl, batchIndex) => {
+                                // Stagger only within this batch
+                                batchEl.style.transitionDelay = `${batchIndex * 0.08}s`;
+                                batchEl.classList.add('visible');
+                                obs.unobserve(batchEl);
+                            });
+                            batchQueue = [];
+                        }, 50);
                     }
                 });
             }, {
