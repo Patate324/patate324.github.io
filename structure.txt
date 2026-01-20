@@ -1,11 +1,15 @@
+assets/components/head-meta.html
 assets/components/footer.html
 assets/components/header.html
 assets/css/mobile-menu.css
 assets/css/theme.css
 assets/css/dark-mode-toggle.css
+assets/css/animations.css
 assets/js/dark-mode-toggle.js
 assets/js/components.js
 assets/js/theme-init.js
+assets/js/fade-in.js
+en/index.html
 en/about/index.html
 en/blog/index.html
 en/blog/post/2026-01-01-01/index.html
@@ -13,6 +17,7 @@ en/contact/index.html
 en/contact/success/index.html
 en/index.html
 en/publications/index.html
+fr/index.html
 fr/a-propos/index.html
 fr/blogue/index.html
 fr/blogue/publication/2026-01-01-01/index.html
@@ -22,3 +27,13 @@ fr/index.html
 fr/publications/index.html
 index.html
 404.html
+android-chrome-192x192.png
+android-chrome-512x512.png
+apple-touch-icon.png
+favicon.ico
+favicon-16x16.png
+favicon-32x32..png
+humans.txt
+robots.txt
+sitemap.xml
+README.md

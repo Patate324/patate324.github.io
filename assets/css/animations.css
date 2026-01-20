@@ -1,0 +1,136 @@
+/*
+*   Website Design & Development Disclosure
+*   ========================================
+*   This website was created with the assistance of Claude AI (Anthropic) and Copilot AI (Microsoft).
+*   AI was used for: code generation, design layout, translation, and content structuring.
+*   
+*   Final review, content, content editing, and customization was performed by the site owner.
+*/
+
+/* ====== Scroll-triggered Fade-in Animations ====== */
+
+/*
+ * USAGE GUIDE:
+ * 
+ * 1. Add the CSS file to your HTML <head>:
+ *    <link rel="stylesheet" href="/assets/css/animations.css">
+ * 
+ * 2. Add the JavaScript file before closing </body>:
+ *    <script src="/assets/js/fade-in.js"></script>
+ * 
+ * 3. Add fade-in classes to any HTML elements you want to animate:
+ * 
+ *    Basic fade up from bottom:
+ *    <section class="fade-in">
+ *      <h2>Your Content</h2>
+ *    </section>
+ * 
+ *    Fade in from left:
+ *    <div class="fade-in-left">Slides from left</div>
+ * 
+ *    Fade in from right:
+ *    <div class="fade-in-right">Slides from right</div>
+ * 
+ *    Fade in with scale:
+ *    <div class="fade-in-scale">Scales up slightly</div>
+ * 
+ * 4. Elements will automatically stagger (appear one after another)
+ *    based on their order in the DOM. No extra work needed!
+ * 
+ * 5. Optional: Add manual delays to specific elements:
+ *    <div class="fade-in fade-in-delay-3">Waits 0.3s extra</div>
+ * 
+ * NOTES:
+ * - Animations trigger when element is 10% visible in viewport
+ * - Each element animates only once (won't re-trigger on scroll up)
+ * - Respects user's "prefers-reduced-motion" accessibility setting
+ * - Auto-stagger adds 120ms delay between consecutive elements
+ */
+
+/* Base state - hidden and slightly offset downward */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+/* Visible state - revealed and in position */
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Alternative animation: Slide in from left */
+.fade-in-left {
+  opacity: 0;
+  transform: translateX(-24px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.fade-in-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Alternative animation: Slide in from right */
+.fade-in-right {
+  opacity: 0;
+  transform: translateX(24px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.fade-in-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Alternative animation: Scale up slightly */
+.fade-in-scale {
+  opacity: 0;
+  transform: scale(0.95);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.fade-in-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Accessibility: Respect user's motion preferences */
+/* If user has "reduce motion" enabled, animations will be simpler and faster */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in,
+  .fade-in-left,
+  .fade-in-right,
+  .fade-in-scale {
+    transform: none;
+    transition: opacity 0.3s ease-out;
+  }
+  
+  .fade-in.visible,
+  .fade-in-left.visible,
+  .fade-in-right.visible,
+  .fade-in-scale.visible {
+    transform: none;
+  }
+}
+
+/* Optional: Manual delay classes for fine-tuning timing */
+/* Example: <div class="fade-in fade-in-delay-2">Waits extra 200ms</div> */
+.fade-in-delay-1 { transition-delay: 0.1s; }
+.fade-in-delay-2 { transition-delay: 0.2s; }
+.fade-in-delay-3 { transition-delay: 0.3s; }
+.fade-in-delay-4 { transition-delay: 0.4s; }
+.fade-in-delay-5 { transition-delay: 0.5s; }
