@@ -30,16 +30,22 @@
 
         if (fadeInElements.length === 0) return;
 
+        // Filter out hidden elements for stagger calculation
+        const visibleElements = Array.from(fadeInElements).filter(el => {
+            return !el.classList.contains('hidden');
+        });
+
         // Create observer to watch when elements enter viewport
         const observer = new IntersectionObserver((entries, obs) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const el = entry.target;
                     
-                    // Auto-stagger: 120ms delay between each element
-                    const allElements = Array.from(fadeInElements);
-                    const index = allElements.indexOf(el);
-                    el.style.transitionDelay = `${index * 0.12}s`;
+                    // Auto-stagger: 120ms delay between each VISIBLE element
+                    const index = visibleElements.indexOf(el);
+                    if (index !== -1) {
+                        el.style.transitionDelay = `${index * 0.12}s`;
+                    }
                     
                     // Add visible class to trigger animation
                     el.classList.add('visible');
