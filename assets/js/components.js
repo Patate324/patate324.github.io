@@ -6,9 +6,35 @@
 *   
 *   Final review, content, content editing, and customization was performed by the site owner.
 */
+
+/*
+ * COMPONENT LOADER & SITE FUNCTIONALITY
+ * ======================================
+ * 
+ * This script handles:
+ * 1. Loading shared components (header, footer, meta tags)
+ * 2. Bilingual navigation (English ⇄ French)
+ * 3. Theme toggle initialization
+ * 4. Mobile menu functionality
+ * 
+ * HOW THE BILINGUAL SYSTEM WORKS:
+ * - pageMap: English URLs → French URLs
+ * - reversePageMap: French URLs → English URLs
+ * - Language detected from URL path (/en/ or /fr/)
+ * - Language toggle switches to corresponding page in other language
+ * 
+ * ADDING NEW PAGES:
+ * 1. Add to pageMap (line 32): '/en/your-page/': '/fr/votre-page/'
+ * 2. Add to navConfig (line 45) with English and French metadata
+ * 3. That's it! System handles the rest automatically
+ */
+
 // Component loader - loads header and footer
 (function() {
-    // Page mapping (English → French)
+    /*
+     * PAGE MAPPING SYSTEM
+     * Maps English pages to their French equivalents
+     */
     const pageMap = {
         '/en/': '/fr/',
         '/en/about/': '/fr/a-propos/',
@@ -17,7 +43,7 @@
         '/en/contact/': '/fr/contact/'
     };
 
-    // Create reverse map (French → English)
+    // Create reverse map (French → English) automatically
     const reversePageMap = Object.entries(pageMap).reduce((acc, [en, fr]) => {
         acc[fr] = en;
         return acc;
@@ -27,7 +53,14 @@
     window.__PAGE_MAP__ = pageMap;
     window.__REVERSE_PAGE_MAP__ = reversePageMap;
 
-    // Navigation order and metadata (keys match pageMap)
+    /*
+     * NAVIGATION CONFIGURATION
+     * Defines all navigation links and their metadata
+     * 
+     * TO ADD A NEW PAGE:
+     * 1. Add entry here with English path
+     * 2. Add same path to pageMap above with French equivalent
+     */
     const navConfig = [
         {
             enPath: '/en/',
@@ -56,7 +89,7 @@
         }
     ];
 
-    // Build navigation from config + pageMap
+    // Build complete translations object from navConfig + pageMap
     const translations = {
         en: {
             nav: navConfig.map(item => ({
@@ -71,7 +104,7 @@
         },
         fr: {
             nav: navConfig.map(item => ({
-                href: pageMap[item.enPath], // Derive French URL from pageMap
+                href: pageMap[item.enPath],
                 title: item.fr.title,
                 text: item.fr.text
             })),
@@ -82,7 +115,10 @@
         }
     };
 
-    // Detect current language from URL
+    /*
+     * LANGUAGE DETECTION
+     * Detects current language from URL path
+     */
     function detectLanguage() {
         // Check if we're on 404 page with forced language
         if (window.__FORCE_404_LANGUAGE__) {
@@ -95,38 +131,44 @@
         return 'en'; // default
     }
 
-    // Get current page path (normalized with trailing slash)
+    /*
+     * GET CURRENT PAGE PATH
+     * Returns normalized path with trailing slash
+     */
     function getCurrentPagePath() {
         let path = window.location.pathname;
-        // Ensure trailing slash
         if (!path.endsWith('/')) {
             path += '/';
         }
         return path;
     }
 
-    // Get the corresponding page in the other language
+    /*
+     * LANGUAGE TOGGLE PATH CALCULATOR
+     * Finds the corresponding page in the other language
+     */
     function getToggledLanguagePath() {
         const currentPath = getCurrentPagePath();
         const currentLang = detectLanguage();
         
-        // Special case: if we're on the 404 page, just toggle the language of the 404 page itself
+        // Special case: 404 page just toggles language of 404 page itself
         if (currentPath === '/404.html' || currentPath === '/404/') {
             return '/404.html';
         }
         
         if (currentLang === 'en') {
-            // English → French
             return pageMap[currentPath] || '/fr/';
         } else {
-            // French → English
             return reversePageMap[currentPath] || '/en/';
         }
     }
 
     const currentLang = detectLanguage();
 
-    // Function to load HTML component
+    /*
+     * LOAD HTML COMPONENT
+     * Fetches external HTML file and injects it into the page
+     */
     async function loadComponent(elementId, componentPath) {
         try {
             const response = await fetch(componentPath);
@@ -138,7 +180,11 @@
         }
     }
 
-    // Function to populate navigation links
+    /*
+     * POPULATE NAVIGATION LINKS
+     * Creates navigation menu items in both desktop and mobile menus
+     * Marks current page with aria-current="page"
+     */
     function populateNavigation() {
         const navData = translations[currentLang].nav;
         const currentPath = getCurrentPagePath();
@@ -160,7 +206,10 @@
         }
     }
 
-    // Function to set up language toggle
+    /*
+     * SETUP LANGUAGE TOGGLE BUTTON
+     * Configures the language switcher button
+     */
     function setupLanguageToggle() {
         const langData = translations[currentLang].langToggle;
         const toggledPath = getToggledLanguagePath();
@@ -184,7 +233,10 @@
         }
     }
 
-    // Function to translate static content
+    /*
+     * TRANSLATE STATIC CONTENT
+     * Updates aria-labels and footer text based on current language
+     */
     function translateStaticContent() {
         // Update nav aria-labels
         document.querySelectorAll('nav').forEach(nav => {
@@ -200,28 +252,23 @@
         }
     }
 
-    // Function to initialize everything after components are loaded
+    /*
+     * INITIALIZE ALL COMPONENTS
+     * Called after HTML components are loaded
+     */
     function initializeComponents() {
-        // Populate navigation with correct language
         populateNavigation();
-        
-        // Set up language toggle
         setupLanguageToggle();
-        
-        // Translate static content
         translateStaticContent();
-
-        // Initialize theme toggles
         initializeThemeToggles();
-        
-        // Initialize mobile menu
         initializeMobileMenu();
     }
 
-    // Theme toggle initialization
+    /*
+     * THEME TOGGLE INITIALIZATION
+     * Sets up dark/light mode toggle buttons
+     */
     function initializeThemeToggles() {
-        // Determine aria-label based on language
-        const themeToggleLabel = currentLang === 'fr' ? 'Basculer le thème' : 'Toggle theme';
         const darkModeLabel = currentLang === 'fr' ? 'Basculer le mode sombre' : 'Toggle Dark Mode';
         
         // Desktop theme toggle
@@ -239,7 +286,7 @@
             });
         }
 
-        // Mobile theme toggle - always initialize if container exists
+        // Mobile theme toggle
         const mobileContainer = document.querySelector('#theme-toggle-container-mobile');
         if (mobileContainer) {
             new DayNightToggle('#theme-toggle-container-mobile', {
@@ -264,7 +311,10 @@
         });
     }
 
-    // Mobile menu initialization
+    /*
+     * MOBILE MENU INITIALIZATION
+     * Sets up hamburger menu and overlay functionality
+     */
     function initializeMobileMenu() {
         const hamburger = document.querySelector('.hamburger');
         const mobileMenu = document.querySelector('.mobile-menu');
@@ -272,6 +322,7 @@
         
         if (!hamburger || !mobileMenu || !mobileOverlay) return;
 
+        // Open menu: slide in menu, show overlay, prevent body scroll
         function openMenu() {
             hamburger.classList.add('active');
             mobileMenu.classList.add('active');
@@ -280,6 +331,7 @@
             document.body.style.overflow = 'hidden';
         }
         
+        // Close menu: reverse animations, restore body scroll
         function closeMenu() {
             hamburger.classList.remove('active');
             mobileMenu.classList.remove('active');
@@ -288,7 +340,7 @@
             document.body.style.overflow = '';
         }
         
-        // Only the hamburger button opens/closes the menu
+        // Hamburger button toggles menu
         hamburger.addEventListener('click', function(e) {
             e.stopPropagation();
             if (hamburger.classList.contains('active')) {
@@ -298,13 +350,13 @@
             }
         });
         
-        // Clicking the overlay closes the menu
+        // Clicking overlay closes menu
         mobileOverlay.addEventListener('click', function(e) {
             e.stopPropagation();
             closeMenu();
         });
         
-        // Close menu when clicking a link
+        // Clicking menu link closes menu
         document.querySelectorAll('.mobile-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 if (mobileMenu.classList.contains('active')) {
@@ -314,29 +366,35 @@
         });
     }
 
-    // Determine the correct base path based on current location
+    /*
+     * BASE PATH CALCULATOR
+     * Determines correct path to assets based on current location
+     */
     function getBasePath() {
         const path = window.location.pathname;
         
-        // Special case: if we're on 404 page, always use absolute path
+        // 404 page always uses absolute path
         if (path === '/404.html' || path === '/404/' || path.includes('404')) {
             return '/assets/components/';
         }
         
-        // If we're in /en/ or /fr/ folder, go up one level
+        // Language folders use absolute path
         if (path.includes('/en/') || path.includes('/fr/')) {
             return '/assets/components/';
         }
-        // If we're at root, use relative path
+        // Root uses relative path
         return 'assets/components/';
     }
 
     const basePath = getBasePath();
 
-    // Hide body until components are loaded to prevent flash
+    // Hide page until components are loaded (prevents flash of unstyled content)
     document.documentElement.style.visibility = 'hidden';
 
-    // Load components when DOM is ready
+    /*
+     * MAIN INITIALIZATION
+     * Loads components and initializes functionality
+     */
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', async () => {
             await Promise.all([

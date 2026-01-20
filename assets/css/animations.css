@@ -18,36 +18,22 @@
  * 2. Add the JavaScript file before closing </body>:
  *    <script src="/assets/js/fade-in.js"></script>
  * 
- * 3. Add fade-in classes to any HTML elements you want to animate:
+ * 3. Add fade-in classes to any HTML elements:
  * 
- *    Basic fade up from bottom:
- *    <section class="fade-in">
- *      <h2>Your Content</h2>
- *    </section>
- * 
- *    Fade in from left:
+ *    <section class="fade-in">Fades up from bottom</section>
  *    <div class="fade-in-left">Slides from left</div>
- * 
- *    Fade in from right:
  *    <div class="fade-in-right">Slides from right</div>
- * 
- *    Fade in with scale:
  *    <div class="fade-in-scale">Scales up slightly</div>
  * 
- * 4. Elements will automatically stagger (appear one after another)
- *    based on their order in the DOM. No extra work needed!
- * 
- * 5. Optional: Add manual delays to specific elements:
- *    <div class="fade-in fade-in-delay-3">Waits 0.3s extra</div>
+ * 4. Elements automatically stagger (appear one after another)
  * 
  * NOTES:
  * - Animations trigger when element is 10% visible in viewport
- * - Each element animates only once (won't re-trigger on scroll up)
+ * - Each element animates only once
  * - Respects user's "prefers-reduced-motion" accessibility setting
- * - Auto-stagger adds 120ms delay between consecutive elements
  */
 
-/* Base state - hidden and slightly offset downward */
+/* Base fade-in: slides up from bottom */
 .fade-in {
   opacity: 0;
   transform: translateY(24px);
@@ -57,13 +43,12 @@
   will-change: opacity, transform;
 }
 
-/* Visible state - revealed and in position */
 .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Alternative animation: Slide in from left */
+/* Slide in from left */
 .fade-in-left {
   opacity: 0;
   transform: translateX(-24px);
@@ -78,7 +63,7 @@
   transform: translateX(0);
 }
 
-/* Alternative animation: Slide in from right */
+/* Slide in from right */
 .fade-in-right {
   opacity: 0;
   transform: translateX(24px);
@@ -93,7 +78,7 @@
   transform: translateX(0);
 }
 
-/* Alternative animation: Scale up slightly */
+/* Scale up variant */
 .fade-in-scale {
   opacity: 0;
   transform: scale(0.95);
@@ -109,7 +94,6 @@
 }
 
 /* Accessibility: Respect user's motion preferences */
-/* If user has "reduce motion" enabled, animations will be simpler and faster */
 @media (prefers-reduced-motion: reduce) {
   .fade-in,
   .fade-in-left,
@@ -126,11 +110,3 @@
     transform: none;
   }
 }
-
-/* Optional: Manual delay classes for fine-tuning timing */
-/* Example: <div class="fade-in fade-in-delay-2">Waits extra 200ms</div> */
-.fade-in-delay-1 { transition-delay: 0.1s; }
-.fade-in-delay-2 { transition-delay: 0.2s; }
-.fade-in-delay-3 { transition-delay: 0.3s; }
-.fade-in-delay-4 { transition-delay: 0.4s; }
-.fade-in-delay-5 { transition-delay: 0.5s; }

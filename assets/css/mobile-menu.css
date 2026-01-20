@@ -6,16 +6,40 @@
 *   
 *   Final review, content, content editing, and customization was performed by the site owner.
 */
+
+/*
+ * MOBILE MENU SYSTEM
+ * ==================
+ * 
+ * HOW IT WORKS:
+ * - Desktop (>768px): Hamburger and mobile menu are hidden
+ * - Mobile (≤768px): Hamburger button appears, desktop nav hides
+ * - Click hamburger: Slide-in menu from right + dark overlay
+ * - Click overlay or link: Menu closes
+ * 
+ * COMPONENTS:
+ * 1. .hamburger - Three-line button that transforms into X
+ * 2. .mobile-menu-overlay - Dark semi-transparent background
+ * 3. .mobile-menu - Slide-in menu panel from right side
+ * 
+ * CONTROLLED BY: components.js (initializeMobileMenu function)
+ */
+
 /* ====== Hamburger Menu Styles ====== */
+
+/*
+ * HAMBURGER BUTTON (☰ → ✕)
+ * Three horizontal lines that transform into X when active
+ */
 .hamburger {
-    display: none;
+    display: none;  /* Hidden on desktop, shown on mobile */
     flex-direction: column;
     gap: 5px;
     background: none;
     border: none;
     cursor: pointer;
     padding: 8px;
-    z-index: 101;
+    z-index: 101;  /* Above overlay (98) and menu (99) */
     position: relative;
 }
 
@@ -23,27 +47,41 @@
     width: 25px;
     height: 3px;
     background-color: var(--accent-primary);
-    transition: all 0.3s ease; /* Smooth animation for hamburger → X transformation */
+    transition: all 0.3s ease;
     border-radius: 2px;
 }
 
-/* Hamburger → X transformation when menu is open */
+/*
+ * HAMBURGER → X TRANSFORMATION
+ * When .active class is added by JavaScript:
+ * - Top line rotates and moves to form top of X
+ * - Middle line fades out
+ * - Bottom line rotates and moves to form bottom of X
+ */
 .hamburger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(8px, 8px); /* Top line: rotate and move to form top of X */
+    transform: rotate(45deg) translate(8px, 8px);
 }
 
 .hamburger.active span:nth-child(2) {
-    opacity: 0; /* Middle line: fade out */
-    transform: scaleX(0); /* Also shrink to ensure it disappears on Safari */
+    opacity: 0;
+    transform: scaleX(0);
 }
 
 .hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -7px); /* Bottom line: rotate and move to form bottom of X */
+    transform: rotate(-45deg) translate(7px, -7px);
 }
 
-/* Mobile Menu Overlay */
+/* ====== Mobile Menu Overlay ====== */
+
+/*
+ * DARK OVERLAY BACKGROUND
+ * - Covers entire screen when menu is open
+ * - Clicking it closes the menu
+ * - pointer-events: none when inactive (doesn't block clicks)
+ * - pointer-events: auto when active (allows clicking to close)
+ */
 .mobile-menu-overlay {
-    display: none;
+    display: none;  /* Hidden on desktop */
     position: fixed;
     top: 0;
     left: 0;
@@ -53,20 +91,25 @@
     z-index: 98;
     opacity: 0;
     transition: opacity 0.3s ease;
-    pointer-events: none; /* KEY FIX: Don't block clicks when inactive */
+    pointer-events: none;
 }
 
 .mobile-menu-overlay.active {
     opacity: 1;
-    pointer-events: auto; /* Allow clicks when active */
+    pointer-events: auto;
 }
 
-/* Mobile Menu */
+/* ====== Mobile Menu Panel ====== */
+
+/*
+ * SLIDE-IN MENU PANEL
+ * Slides in from right side when opened
+ */
 .mobile-menu {
-    display: none;
+    display: none;  /* Hidden on desktop */
     position: fixed;
     top: 0;
-    right: -100%;
+    right: -100%;  /* Start off-screen */
     width: 80%;
     max-width: 350px;
     height: 100%;
@@ -76,13 +119,13 @@
     transition: right 0.3s ease;
     overflow-y: auto;
     padding: 80px 30px 30px;
-    /* Don't block pointer events - visibility is handled by position */
 }
 
 .mobile-menu.active {
-    right: 0;
+    right: 0;  /* Slide into view */
 }
 
+/* Navigation links: vertical stack with larger touch targets */
 .mobile-menu nav ul {
     flex-direction: column;
     gap: 20px;
@@ -99,6 +142,7 @@
     padding: 10px 0;
 }
 
+/* Controls: Stacked vertically with horizontal separator */
 .mobile-menu .header-controls {
     flex-direction: column;
     align-items: stretch;
@@ -113,7 +157,9 @@
     justify-content: center;
 }
 
-/* Desktop/Tablet - hide hamburger and mobile menu */
+/* ====== Responsive Breakpoints ====== */
+
+/* Desktop/Tablet: Hide mobile menu components */
 @media (min-width: 769px) {
     .hamburger,
     .mobile-menu,
@@ -122,7 +168,7 @@
     }
 }
 
-/* Mobile - show hamburger and adjust header */
+/* Mobile: Show hamburger and mobile menu */
 @media (max-width: 768px) {
     .hamburger {
         display: flex;
@@ -134,12 +180,12 @@
     }
 
     header {
-        flex-direction: row;
+        flex-direction: row;  /* Keep logo and hamburger side-by-side */
         justify-content: space-between;
         padding: 15px 20px;
     }
 
-    /* Hide desktop nav and controls on mobile */
+    /* Hide desktop navigation on mobile */
     header .header-right {
         display: none;
     }
