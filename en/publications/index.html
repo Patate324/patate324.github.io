@@ -29,6 +29,9 @@
     <!-- Mobile Menu CSS -->
     <link rel="stylesheet" href="/assets/css/mobile-menu.css">
     
+    <!-- Fade-in Animations CSS -->
+    <link rel="stylesheet" href="/assets/css/animations.css">
+    
     <style>
         /* Publications page specific styles */
         .container {
@@ -43,10 +46,25 @@
             margin-bottom: 40px;
         }
 
+        /* Year divider styling */
+        .year-divider {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+            margin: 60px 0 30px 0;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(106, 165, 255, 0.3);
+        }
+
+        .year-divider:first-of-type {
+            margin-top: 0;
+        }
+
         .pub-list {
             display: flex;
             flex-direction: column;
-            gap: 40px;
+            gap: 25px;
+            margin-bottom: 30px;
         }
 
         .pub-item {
@@ -76,10 +94,6 @@
                         0 0 0 1px rgba(106, 165, 255, 0.4),
                         0 0 20px rgba(106, 165, 255, 0.2);
         }
-        
-        .pub-item .pub-link {
-            display: none;
-        }
 
         .pub-title {
             font-size: 1.3rem;
@@ -106,6 +120,54 @@
             line-height: 1.6;
             margin-bottom: 12px;
         }
+
+        /* Load more button styling */
+        .load-more-container {
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .load-more-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: color-mix(in oklab, var(--accent-primary) 15%, transparent);
+            border: 1px solid rgba(106, 165, 255, 0.4);
+            border-radius: 6px;
+            color: var(--accent-primary);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .load-more-btn:hover {
+            background: color-mix(in oklab, var(--accent-primary) 25%, transparent);
+            border-color: rgba(106, 165, 255, 0.6);
+            transform: translateY(-2px);
+            color: var(--accent-hover);
+        }
+
+        .load-more-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Hidden state for publications beyond initial display */
+        .pub-item.hidden {
+            display: none;
+        }
+
+        /* Show message when all publications are visible */
+        .all-loaded-message {
+            text-align: center;
+            color: var(--text-muted);
+            font-style: italic;
+            margin: 50px 0;
+            display: none;
+        }
+
+        .all-loaded-message.visible {
+            display: block;
+        }
     </style>
 </head>
 
@@ -115,11 +177,12 @@
     <div id="header-placeholder"></div>
 
     <div class="container">
-        <h1>Publications</h1>
+        <h1 class="fade-in">Publications</h1>
 
+        <!-- 2025 Publications -->
+        <div class="year-divider fade-in">2025</div>
         <div class="pub-list">
-            <!-- Example Publication (User-provided DOI) -->
-            <a href="https://doi.org/10.1007/s11663-025-03758-7" target="_blank" class="pub-item">
+            <a href="https://doi.org/10.1007/s11663-025-03758-7" target="_blank" class="pub-item fade-in">
                 <div class="pub-title">
                     Example Publication Title (Replace with Actual Title)
                 </div>
@@ -134,9 +197,12 @@
                     Replace this text with a short description of the publication.
                 </div>
             </a>
+        </div>
 
-            <!-- Placeholder Publication 2 -->
-            <a href="#" target="_blank" class="pub-item">
+        <!-- 2024 Publications -->
+        <div class="year-divider fade-in">2024</div>
+        <div class="pub-list">
+            <a href="#" target="_blank" class="pub-item fade-in">
                 <div class="pub-title">
                     Advanced Modeling of Thermal-Mechanical Systems
                 </div>
@@ -152,8 +218,27 @@
                 </div>
             </a>
 
-            <!-- Placeholder Publication 3 -->
-            <a href="#" target="_blank" class="pub-item">
+            <a href="#" target="_blank" class="pub-item fade-in hidden">
+                <div class="pub-title">
+                    Machine Learning Applications in Process Control
+                </div>
+                <div class="pub-authors">
+                    A. Lastname, G. DataScientist
+                </div>
+                <div class="pub-meta">
+                    IEEE Transactions on Control Systems, 2024
+                </div>
+                <div class="pub-abstract">
+                    Novel approaches to using machine learning algorithms for real-time process optimization
+                    and predictive maintenance in manufacturing environments.
+                </div>
+            </a>
+        </div>
+
+        <!-- 2023 Publications -->
+        <div class="year-divider fade-in">2023</div>
+        <div class="pub-list">
+            <a href="#" target="_blank" class="pub-item fade-in">
                 <div class="pub-title">
                     Optimization Strategies for Large‑Scale Industrial Processes
                 </div>
@@ -168,6 +253,48 @@
                     enhancing reliability in large‑scale industrial operations.
                 </div>
             </a>
+
+            <a href="#" target="_blank" class="pub-item fade-in hidden">
+                <div class="pub-title">
+                    Energy Efficiency in Manufacturing Systems
+                </div>
+                <div class="pub-authors">
+                    A. Lastname, H. Sustainability
+                </div>
+                <div class="pub-meta">
+                    Journal of Sustainable Manufacturing, 2023
+                </div>
+                <div class="pub-abstract">
+                    Investigation of energy consumption patterns and optimization strategies for 
+                    reducing environmental impact in modern manufacturing facilities.
+                </div>
+            </a>
+
+            <a href="#" target="_blank" class="pub-item fade-in hidden">
+                <div class="pub-title">
+                    Digital Twin Technologies for Industrial Applications
+                </div>
+                <div class="pub-authors">
+                    A. Lastname, I. Developer, J. Technologist
+                </div>
+                <div class="pub-meta">
+                    Computers in Industry, 2023
+                </div>
+                <div class="pub-abstract">
+                    Development and implementation of digital twin frameworks for monitoring, 
+                    simulation, and optimization of complex industrial processes.
+                </div>
+            </a>
+        </div>
+
+        <!-- Load More Button -->
+        <div class="load-more-container fade-in">
+            <button class="load-more-btn" id="loadMoreBtn">Load More Publications</button>
+        </div>
+
+        <!-- All Loaded Message (hidden by default) -->
+        <div class="all-loaded-message" id="allLoadedMsg">
+            All publications loaded
         </div>
     </div>
 
@@ -179,6 +306,64 @@
     
     <!-- Components Loader (loads header, footer, and initializes everything) -->
     <script src="/assets/js/components.js"></script>
+    
+    <!-- Fade-in Animations JavaScript -->
+    <script src="/assets/js/fade-in.js"></script>
+
+    <!-- Publications Load More Logic -->
+    <script>
+        /*
+         * PUBLICATIONS LOAD MORE FUNCTIONALITY
+         * ====================================
+         * 
+         * HOW IT WORKS:
+         * - Initially shows first 10 publications
+         * - "Load More" button reveals 10 more at a time
+         * - When all publications are visible, button is replaced with message
+         * 
+         * TO ADJUST:
+         * - Change itemsPerLoad (line 15) to show more/fewer at once
+         */
+        
+        (function() {
+            const itemsPerLoad = 10; // Number of publications to show at once
+            const loadMoreBtn = document.getElementById('loadMoreBtn');
+            const allLoadedMsg = document.getElementById('allLoadedMsg');
+            const allPubItems = document.querySelectorAll('.pub-item');
+            
+            let currentlyVisible = 0;
+
+            // Count how many are initially visible (not hidden)
+            allPubItems.forEach(item => {
+                if (!item.classList.contains('hidden')) {
+                    currentlyVisible++;
+                }
+            });
+
+            // Check if we need the load more button at all
+            if (allPubItems.length <= itemsPerLoad) {
+                loadMoreBtn.style.display = 'none';
+            }
+
+            // Load more button click handler
+            loadMoreBtn.addEventListener('click', function() {
+                const hiddenItems = document.querySelectorAll('.pub-item.hidden');
+                const itemsToShow = Math.min(itemsPerLoad, hiddenItems.length);
+                
+                // Show the next batch of hidden items
+                for (let i = 0; i < itemsToShow; i++) {
+                    hiddenItems[i].classList.remove('hidden');
+                    currentlyVisible++;
+                }
+
+                // If all items are now visible, hide button and show message
+                if (currentlyVisible >= allPubItems.length) {
+                    loadMoreBtn.style.display = 'none';
+                    allLoadedMsg.classList.add('visible');
+                }
+            });
+        })();
+    </script>
 
 </body>
 </html>
