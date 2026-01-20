@@ -319,14 +319,15 @@
          * HOW IT WORKS:
          * - Initially shows first 10 publications
          * - "Load More" button reveals 10 more at a time
-         * - When all publications are visible, button is replaced with message
+         * - Hidden items don't have fade-in class initially, preventing animation conflicts
+         * - When revealed, fade-in class is added with proper delay
          * 
          * TO ADJUST:
-         * - Change itemsPerLoad (line 15) to show more/fewer at once
+         * - Change itemsPerLoad to show more/fewer at once
          */
         
         (function() {
-            const itemsPerLoad = 10; // Number of publications to show at once
+            const itemsPerLoad = 10;
             const loadMoreBtn = document.getElementById('loadMoreBtn');
             const allLoadedMsg = document.getElementById('allLoadedMsg');
             const allPubItems = document.querySelectorAll('.pub-item');
@@ -350,9 +351,25 @@
                 const hiddenItems = document.querySelectorAll('.pub-item.hidden');
                 const itemsToShow = Math.min(itemsPerLoad, hiddenItems.length);
                 
-                // Show the next batch of hidden items
+                // Show the next batch of hidden items with staggered animation
                 for (let i = 0; i < itemsToShow; i++) {
-                    hiddenItems[i].classList.remove('hidden');
+                    const item = hiddenItems[i];
+                    item.classList.remove('hidden');
+                    
+                    // Add fade-in animation with delay
+                    setTimeout(() => {
+                        item.style.opacity = '0';
+                        item.style.transform = 'translateY(24px)';
+                        item.style.transition = 'opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1)';
+                        
+                        requestAnimationFrame(() => {
+                            requestAnimationFrame(() => {
+                                item.style.opacity = '1';
+                                item.style.transform = 'translateY(0)';
+                            });
+                        });
+                    }, i * 120); // Stagger by 120ms like the fade-in script
+                    
                     currentlyVisible++;
                 }
 
