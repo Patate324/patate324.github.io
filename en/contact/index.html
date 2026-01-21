@@ -11,7 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact – Patate324</title>
+    <title>Contact — Patate324</title>
     
     <!-- CRITICAL: Set theme BEFORE any visible content loads -->
     <script src="/assets/js/theme-init.js"></script>
@@ -27,6 +27,9 @@
     
     <!-- Mobile Menu CSS -->
     <link rel="stylesheet" href="/assets/css/mobile-menu.css">
+    
+    <!-- Fade-in Animations CSS -->
+    <link rel="stylesheet" href="/assets/css/animations.css">
     
     <style>
         /* Contact page specific styles */
@@ -126,9 +129,9 @@
     <div id="header-placeholder"></div>
 
     <div class="container">
-        <h1>Contact</h1>
+        <h1 class="fade-in">Contact</h1>
 
-        <div class="contact-info">
+        <div class="contact-info fade-in">
             If you'd like to get in touch, feel free to reach out using the form below or through any of my professional links.
             <br><br>
             <strong>Email:</strong> <a href="mailto:your.email@example.com">your.email@example.com</a><br>
@@ -137,7 +140,7 @@
         </div>
 
         <!-- Contact Form -->
-        <form>
+        <form class="fade-in">
             <label for="name">Name</label>
             <input type="text" id="name" placeholder="Your name" required>
 
@@ -159,6 +162,9 @@
     
     <!-- Components Loader (loads header, footer, and initializes everything) -->
     <script src="/assets/js/components.js"></script>
+    
+    <!-- Fade-in Animations JavaScript -->
+    <script src="/assets/js/fade-in.js"></script>
 
 </body>
 </html>
