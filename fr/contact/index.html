@@ -28,6 +28,9 @@
     <!-- Mobile Menu CSS -->
     <link rel="stylesheet" href="/assets/css/mobile-menu.css">
     
+    <!-- Fade-in Animations CSS -->
+    <link rel="stylesheet" href="/assets/css/animations.css">
+    
     <style>
         /* Contact page specific styles */
         .container {
@@ -126,9 +129,9 @@
     <div id="header-placeholder"></div>
 
     <div class="container">
-        <h1>Contact</h1>
+        <h1 class="fade-in">Contact</h1>
 
-        <div class="contact-info">
+        <div class="contact-info fade-in">
             Si vous souhaitez me contacter, n'hésitez pas à utiliser le formulaire ci-dessous ou à me joindre via mes liens professionnels.
             <br><br>
             <strong>Courriel :</strong> <a href="mailto:votre.email@exemple.com">votre.email@exemple.com</a><br>
@@ -137,7 +140,7 @@
         </div>
 
         <!-- Contact Form -->
-        <form>
+        <form class="fade-in">
             <label for="name">Nom</label>
             <input type="text" id="name" placeholder="Votre nom" required>
 
@@ -159,6 +162,9 @@
     
     <!-- Components Loader (loads header, footer, and initializes everything) -->
     <script src="/assets/js/components.js"></script>
+    
+    <!-- Fade-in Animations JavaScript -->
+    <script src="/assets/js/fade-in.js"></script>
 
 </body>
 </html>

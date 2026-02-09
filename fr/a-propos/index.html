@@ -28,6 +28,9 @@
     <!-- Mobile Menu CSS -->
     <link rel="stylesheet" href="/assets/css/mobile-menu.css">
     
+    <!-- Fade-in Animations CSS -->
+    <link rel="stylesheet" href="/assets/css/animations.css">
+    
     <style>
         /* About page specific styles */
         .container {
@@ -126,10 +129,10 @@
     <div id="header-placeholder"></div>
 
     <div class="container">
-        <h1>À propos</h1>
+        <h1 class="fade-in">À propos</h1>
 
         <!-- Profile Section -->
-        <div class="panel">
+        <div class="panel fade-in">
             <div class="profile-section">
                 <div class="profile-picture" aria-label="Espace réservé pour photo de profil">
                     <!-- Placeholder for your portrait -->
@@ -149,7 +152,7 @@
         </div>
 
         <!-- Experience -->
-        <div class="panel cv-section">
+        <div class="panel cv-section fade-in">
             <h2>Expérience professionnelle</h2>
             <ul>
                 <li><strong>Poste / Entreprise</strong> — Brève description des responsabilités et réalisations.</li>
@@ -159,7 +162,7 @@
         </div>
 
         <!-- Education -->
-        <div class="panel cv-section">
+        <div class="panel cv-section fade-in">
             <h2>Formation</h2>
             <ul>
                 <li><strong>Diplôme — Établissement</strong> — Domaine d'études, travaux ou recherches notables.</li>
@@ -169,7 +172,7 @@
 
         <!-- Skills and Values Grid -->
         <div class="grid-2">
-            <div class="panel cv-section">
+            <div class="panel cv-section fade-in">
                 <h2>Compétences techniques</h2>
                 <ul>
                     <li>Outils d'ingénierie, logiciels ou plateformes de modélisation</li>
@@ -179,7 +182,7 @@
                 </ul>
             </div>
 
-            <div class="panel cv-section">
+            <div class="panel cv-section fade-in">
                 <h2>Valeurs professionnelles</h2>
                 <ul>
                     <li>Précision et clarté dans la communication</li>
@@ -199,6 +202,9 @@
     
     <!-- Components Loader (loads header, footer, and initializes everything) -->
     <script src="/assets/js/components.js"></script>
+
+    <!-- Fade-in Animations JavaScript -->
+    <script src="/assets/js/fade-in.js"></script>
 
 </body>
 </html>

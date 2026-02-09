@@ -15,6 +15,7 @@
     
     <!-- CRITICAL: Set theme BEFORE any visible content loads -->
     <script src="/assets/js/theme-init.js"></script>
+    
         
     <!-- Head Meta Placeholder -->
     <div id="head-meta-placeholder"></div>
@@ -27,6 +28,9 @@
     
     <!-- Mobile Menu CSS -->
     <link rel="stylesheet" href="/assets/css/mobile-menu.css">
+    
+    <!-- Fade-in Animations CSS -->
+    <link rel="stylesheet" href="/assets/css/animations.css">
     
     <style>
         /* Publications page specific styles */
@@ -42,10 +46,25 @@
             margin-bottom: 40px;
         }
 
+        /* Year divider styling */
+        .year-divider {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+            margin: 60px 0 30px 0;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(106, 165, 255, 0.3);
+        }
+
+        .year-divider:first-of-type {
+            margin-top: 0;
+        }
+
         .pub-list {
             display: flex;
             flex-direction: column;
-            gap: 40px;
+            gap: 25px;
+            margin-bottom: 30px;
         }
 
         .pub-item {
@@ -75,10 +94,6 @@
                         0 0 0 1px rgba(106, 165, 255, 0.4),
                         0 0 20px rgba(106, 165, 255, 0.2);
         }
-        
-        .pub-item .pub-link {
-            display: none;
-        }
 
         .pub-title {
             font-size: 1.3rem;
@@ -105,6 +120,54 @@
             line-height: 1.6;
             margin-bottom: 12px;
         }
+
+        /* Load more button styling */
+        .load-more-container {
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .load-more-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: color-mix(in oklab, var(--accent-primary) 15%, transparent);
+            border: 1px solid rgba(106, 165, 255, 0.4);
+            border-radius: 6px;
+            color: var(--accent-primary);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .load-more-btn:hover {
+            background: color-mix(in oklab, var(--accent-primary) 25%, transparent);
+            border-color: rgba(106, 165, 255, 0.6);
+            transform: translateY(-2px);
+            color: var(--accent-hover);
+        }
+
+        .load-more-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Hidden state for publications beyond initial display */
+        .pub-item.hidden {
+            display: none;
+        }
+
+        /* Show message when all publications are visible */
+        .all-loaded-message {
+            text-align: center;
+            color: var(--text-muted);
+            font-style: italic;
+            margin: 50px 0;
+            display: none;
+        }
+
+        .all-loaded-message.visible {
+            display: block;
+        }
     </style>
 </head>
 
@@ -114,59 +177,162 @@
     <div id="header-placeholder"></div>
 
     <div class="container">
-        <h1>Publications</h1>
+        <h1 class="fade-in">Publications</h1>
 
-        <div class="pub-list">
-            <!-- Example Publication (User-provided DOI) -->
-            <a href="https://doi.org/10.1007/s11663-025-03758-7" target="_blank" class="pub-item">
-                <div class="pub-title">
-                    Exemple de titre de publication (à remplacer par le titre réel)
-                </div>
-                <div class="pub-authors">
-                    A. Nom, B. Collaborateur, C. Chercheur
-                </div>
-                <div class="pub-meta">
-                    Metallurgical and Materials Transactions B, 2025  
-                </div>
-                <div class="pub-abstract">
-                    Ceci est un résumé temporaire décrivant le sujet de recherche, la méthodologie et les principales conclusions. 
-                    Remplacez ce texte par une brève description de la publication.
-                </div>
-            </a>
+        <!-- 2025 Publications -->
+        <div class="fade-in">
+            <div class="year-divider">2025</div>
+        </div>
 
-            <!-- Placeholder Publication 2 -->
-            <a href="#" target="_blank" class="pub-item">
-                <div class="pub-title">
-                    Modélisation avancée des systèmes thermo-mécaniques
-                </div>
-                <div class="pub-authors">
-                    A. Nom, D. Ingénieur
-                </div>
-                <div class="pub-meta">
-                    Journal of Computational Engineering, 2024
-                </div>
-                <div class="pub-abstract">
-                    Une étude explorant des techniques de simulation haute-fidélité pour les interactions 
-                    thermo-mécaniques complexes dans les systèmes industriels. Comprend une validation avec des données expérimentales.
-                </div>
-            </a>
+        <div>
+            <div class="pub-list">
+                <!-- 2025 Publication 1 -->
+                <a href="https://doi.org/10.1007/s11663-025-03758-7" target="_blank" class="pub-item fade-in">
+                    <div class="pub-title">
+                        Exemple de titre de publication (à remplacer par le titre réel)
+                    </div>
+                    <div class="pub-authors">
+                        A. Nom, B. Collaborateur, C. Chercheur
+                    </div>
+                    <div class="pub-meta">
+                        Metallurgical and Materials Transactions B, 2025  
+                    </div>
+                    <div class="pub-abstract">
+                        Ceci est un résumé temporaire décrivant le sujet de recherche, la méthodologie et les principales conclusions. 
+                        Remplacez ce texte par une brève description de la publication.
+                    </div>
+                </a>
+            </div>
+        </div>
 
-            <!-- Placeholder Publication 3 -->
-            <a href="#" target="_blank" class="pub-item">
-                <div class="pub-title">
-                    Stratégies d'optimisation pour les processus industriels à grande échelle
-                </div>
-                <div class="pub-authors">
-                    A. Nom, E. Analyste, F. Scientifique
-                </div>
-                <div class="pub-meta">
-                    International Journal of Process Engineering, 2023
-                </div>
-                <div class="pub-abstract">
-                    Ce travail présente des cadres d'optimisation pour améliorer l'efficacité, réduire les déchets et 
-                    renforcer la fiabilité dans les opérations industrielles à grande échelle.
-                </div>
-            </a>
+        <!-- 2024 Publications -->
+        <div class="fade-in">
+            <div class="year-divider">2024</div>
+        </div>
+
+        <div>
+            <div class="pub-list">
+                <!-- 2024 Publication 1 -->
+                <a href="#" target="_blank" class="pub-item fade-in">
+                    <div class="pub-title">
+                        Modélisation avancée des systèmes thermo-mécaniques
+                    </div>
+                    <div class="pub-authors">
+                        A. Nom, D. Ingénieur
+                    </div>
+                    <div class="pub-meta">
+                        Journal of Computational Engineering, 2024
+                    </div>
+                    <div class="pub-abstract">
+                        Une étude explorant des techniques de simulation haute-fidélité pour les interactions 
+                        thermo-mécaniques complexes dans les systèmes industriels. Comprend une validation avec des données expérimentales.
+                    </div>
+                </a>
+
+                <!-- 2024 Publication 2 -->
+                <a href="#" target="_blank" class="pub-item fade-in">
+                    <div class="pub-title">
+                        Applications de l'apprentissage automatique dans le contrôle de processus
+                    </div>
+                    <div class="pub-authors">
+                        A. Nom, G. ScientifiqueDonnées
+                    </div>
+                    <div class="pub-meta">
+                        IEEE Transactions on Control Systems, 2024
+                    </div>
+                    <div class="pub-abstract">
+                        Nouvelles approches pour l'utilisation d'algorithmes d'apprentissage automatique pour l'optimisation 
+                        de processus en temps réel et la maintenance prédictive dans les environnements de fabrication.
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- 2023 Publications -->
+        <div class="fade-in">
+            <div class="year-divider">2023</div>
+        </div>
+
+        <div>
+            <div class="pub-list">
+                <!-- 2023 Publication 1 -->
+                <a href="#" target="_blank" class="pub-item fade-in">
+                    <div class="pub-title">
+                        Stratégies d'optimisation pour les processus industriels à grande échelle
+                    </div>
+                    <div class="pub-authors">
+                        A. Nom, E. Analyste, F. Scientifique
+                    </div>
+                    <div class="pub-meta">
+                        International Journal of Process Engineering, 2023
+                    </div>
+                    <div class="pub-abstract">
+                        Ce travail présente des cadres d'optimisation pour améliorer l'efficacité, réduire les déchets et 
+                        renforcer la fiabilité dans les opérations industrielles à grande échelle.
+                    </div>
+                </a>
+
+                <!-- 2023 Publication 2 -->
+                <a href="#" target="_blank" class="pub-item fade-in">
+                    <div class="pub-title">
+                        Efficacité énergétique dans les systèmes de fabrication
+                    </div>
+                    <div class="pub-authors">
+                        A. Nom, H. Durabilité
+                    </div>
+                    <div class="pub-meta">
+                        Journal of Sustainable Manufacturing, 2023
+                    </div>
+                    <div class="pub-abstract">
+                        Investigation des schémas de consommation d'énergie et des stratégies d'optimisation pour 
+                        réduire l'impact environnemental dans les installations de fabrication modernes.
+                    </div>
+                </a>
+
+                <!-- 2023 Publication 3 -->
+                <a href="#" target="_blank" class="pub-item fade-in">
+                    <div class="pub-title">
+                        Technologies de jumeaux numériques pour les applications industrielles
+                    </div>
+                    <div class="pub-authors">
+                        A. Nom, I. Développeur, J. Technologue
+                    </div>
+                    <div class="pub-meta">
+                        Computers in Industry, 2023
+                    </div>
+                    <div class="pub-abstract">
+                        Développement et mise en œuvre de cadres de jumeaux numériques pour la surveillance, 
+                        la simulation et l'optimisation de processus industriels complexes.
+                    </div>
+                </a>
+
+                <!-- 2023 Publication 4 -->
+                <a href="#" target="_blank" class="pub-item fade-in">
+                    <div class="pub-title">
+                        Technologies de jumeaux numériques pour les applications industrielles
+                    </div>
+                    <div class="pub-authors">
+                        A. Nom, I. Développeur, J. Technologue
+                    </div>
+                    <div class="pub-meta">
+                        Computers in Industry, 2023
+                    </div>
+                    <div class="pub-abstract">
+                        Développement et mise en œuvre de cadres de jumeaux numériques pour la surveillance, 
+                        la simulation et l'optimisation de processus industriels complexes.
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Load More Button -->
+        <div class="load-more-container fade-in">
+            <button class="load-more-btn" id="loadMoreBtn">Charger plus de publications</button>
+        </div>
+
+        <!-- All Loaded Message (hidden by default) -->
+        <div class="all-loaded-message" id="allLoadedMsg">
+            Toutes les publications sont chargées
         </div>
     </div>
 
@@ -178,6 +344,76 @@
     
     <!-- Components Loader (loads header, footer, and initializes everything) -->
     <script src="/assets/js/components.js"></script>
+    
+    <!-- Fade-in Animations JavaScript -->
+    <script src="/assets/js/fade-in.js"></script>
+
+    <!-- Publications Load More Logic -->
+    <script>
+        /*
+        * FONCTIONNALITÉ DE CHARGEMENT DES PUBLICATIONS
+        * ==============================================
+        * 
+        * COMMENT ÇA FONCTIONNE :
+        * - Masque automatiquement les publications après la 10e au chargement de la page
+        * - Le bouton "Charger plus" révèle 10 publications à la fois
+        * 
+        * POUR AJUSTER :
+        * - Changez itemsPerLoad pour afficher plus/moins à la fois
+        */
+        
+        (function() {
+            const itemsPerLoad = 5;
+            const loadMoreBtn = document.getElementById('loadMoreBtn');
+            const allLoadedMsg = document.getElementById('allLoadedMsg');
+            const allPubItems = document.querySelectorAll('.pub-item');
+            
+            // Masquer toutes les publications après les 10 premières
+            allPubItems.forEach((item, index) => {
+                if (index >= itemsPerLoad) {
+                    item.classList.add('hidden');
+                }
+            });
+
+            // Vérifier si nous avons besoin du bouton "charger plus"
+            if (allPubItems.length <= itemsPerLoad) {
+                loadMoreBtn.style.display = 'none';
+            }
+
+            // Gestionnaire de clic du bouton "charger plus"
+            loadMoreBtn.addEventListener('click', function() {
+                const hiddenItems = document.querySelectorAll('.pub-item.hidden');
+                const itemsToShow = Math.min(itemsPerLoad, hiddenItems.length);
+                
+                // Afficher le prochain lot d'éléments masqués avec animation échelonnée
+                for (let i = 0; i < itemsToShow; i++) {
+                    const item = hiddenItems[i];
+                    item.classList.remove('hidden');
+                    
+                    // Ajouter une animation de fondu avec délai
+                    setTimeout(() => {
+                        item.style.opacity = '0';
+                        item.style.transform = 'translateY(24px)';
+                        item.style.transition = 'opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1)';
+                        
+                        requestAnimationFrame(() => {
+                            requestAnimationFrame(() => {
+                                item.style.opacity = '1';
+                                item.style.transform = 'translateY(0)';
+                            });
+                        });
+                    }, i * 120); // Échelonner de 120ms comme le script fade-in
+                }
+
+                // Si tous les éléments sont maintenant visibles, masquer le bouton et afficher le message
+                const remainingHidden = document.querySelectorAll('.pub-item.hidden');
+                if (remainingHidden.length === 0) {
+                    loadMoreBtn.style.display = 'none';
+                    allLoadedMsg.classList.add('visible');
+                }
+            });
+        })();
+    </script>
 
 </body>
 </html>
